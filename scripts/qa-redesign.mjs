@@ -3,7 +3,7 @@
 import { chromium } from 'playwright';
 const B = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
 const b = await chromium.launch({ ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH, args: ['--no-sandbox'] } : {}) });
-const out = []; const ok = (n, c, d = '') => out.push(`${c ? 'PASS' : 'FAIL'}  ${n}${d ? ' — ' + d : ''}`);
+const out = []; let failed = 0; const ok = (n, c, d = '') => { if (!c) failed++; out.push(`${c ? 'PASS' : 'FAIL'}  ${n}${d ? ' — ' + d : ''}`); };
 const errs = [];
 const open = async (ctxOpts, url) => { const ctx = await b.newContext(ctxOpts); const p = await ctx.newPage(); p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => m.type() === 'error' && errs.push(m.text())); await p.goto(B + url, { waitUntil: 'load' }); return p; };
 
@@ -49,6 +49,8 @@ ok('Hero illustration text is announced once (screen-reader sentences present, d
 ok('Connector section present on Home and Suite, before the contact section', (await p.$$('#connector')).length === 1 && (await s.$$('#connector')).length === 1 && (await p.$eval('#connector', (e) => e.nextElementSibling?.id)) === 'contact');
 const tiles = await p.$$eval('#connector .connector-tile', (els) => els.map((e) => ({ name: e.querySelector('.connector-name')?.textContent.trim() ?? '', text: e.textContent.trim(), imgs: [...e.querySelectorAll('img')].map((i) => ({ alt: i.getAttribute('alt'), w: i.getAttribute('width'), h: i.getAttribute('height'), ok: !i.complete || i.naturalWidth > 0 })) })));
 ok('Connector section lists 17 tools in one flat list, each with a visible name', tiles.length === 17 && (await p.$$('#connector .connector-rail')).length === 1 && tiles.every((x) => x.name && x.text === x.name) && (await p.$$('#connector h3, #connector .connector-group')).length === 0);
+// DEFERRED: connector logos are not shipped (0 of 17 tiles carry one), so the logo part of this assertion is vacuous and proves nothing about logo loading.
+// It also accepts an image that has not loaded yet. A future logo check must trigger loading (scroll into view for lazy images), wait for load or error, then inspect.
 ok('Connector logo-and-name tiles: every logo is decorative (alt="") beside its visible name, has width and height, and loads; no logo without a name', tiles.every((x) => x.imgs.every((i) => i.alt === '' && i.w && i.h && i.ok)) && tiles.every((x) => x.name), `${tiles.filter((x) => x.imgs.length).length} of 17 tiles currently carry a logo`);
 ok('Connector tiles carry no per-tool status, badge or link', (await p.$$('#connector .connector-tile .tag, #connector .connector-tile a, #connector .connector-tile button')).length === 0);
 const cText = await p.$eval('#connector', (e) => e.textContent);
@@ -113,3 +115,6 @@ ok('Mobile: overview chips are at least 36 px tall', chipH >= 36, `min=${Math.ro
 ok('No console errors or page exceptions', errs.length === 0, errs.join('; '));
 await b.close();
 console.log(out.join('\n'));
+// Exit status reflects the assertions (an exception earlier in the script also exits non-zero).
+console.log(`\n${out.length - failed} passed, ${failed} failed`);
+process.exitCode = failed || !out.length ? 1 : 0;

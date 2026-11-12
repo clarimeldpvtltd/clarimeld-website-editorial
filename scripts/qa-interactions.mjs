@@ -1,11 +1,11 @@
 // Browser checks for the built site (links, history, keyboard, contact link, motion, no-JS).
-// Needs Playwright, which is NOT a project dependency:  npm i -D playwright  (or run it from anywhere that has it).
+// Needs Playwright, which is NOT a project dependency: see scripts/run-qa.mjs for how to make it resolvable. Exit status: 0 only if every assertion passed.
 // Usage: serve the build (npm run preview), then  PREVIEW_URL=http://127.0.0.1:4173 node scripts/qa-interactions.mjs
 // Optional: CHROME_PATH to use an installed Chrome.
 import { chromium } from 'playwright';
 const B = ''+(process.env.PREVIEW_URL||'http://127.0.0.1:4173')+'';
 const b = await chromium.launch({ ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {}) });
-const results = []; const ok = (n, c, d = '') => results.push(`${c ? 'PASS' : 'FAIL'}  ${n}${d ? ' — ' + d : ''}`);
+const results = []; let failed = 0; const ok = (n, c, d = '') => { if (!c) failed++; results.push(`${c ? 'PASS' : 'FAIL'}  ${n}${d ? ' — ' + d : ''}`); };
 const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
 const page = await ctx.newPage();
 const errs = []; page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
@@ -21,6 +21,7 @@ for (const p of pages) {
     if (h.startsWith('#')) { const id = h.slice(1); if (id && !(await page.$(`#${id}`))) broken.push(`${p} -> ${h}`); continue; }
     const r = await page.request.get(B + h.split('#')[0]); if (r.status() >= 400) broken.push(`${p} -> ${h} (${r.status()})`);
   }
+  // DEFERRED: a lazy image that has not been triggered to load yet reads as broken here (complete/naturalWidth); a logo-loading check needs to trigger loading and wait first.
   const imgs = await page.$$eval('img', (is) => is.map((i) => i.complete && i.naturalWidth > 0));
   if (imgs.includes(false)) broken.push(`${p} broken image`);
 }
@@ -130,3 +131,6 @@ const outline = await page.evaluate(() => getComputedStyle(document.activeElemen
 ok('Keyboard: focused element shows an outline', outline !== 'none', outline);
 ok('No console errors or page exceptions during the run', errs.length === 0, errs.join('; '));
 console.log(results.join('\n')); await b.close();
+// Exit status reflects the assertions (an exception earlier in the script also exits non-zero).
+console.log(`\n${results.length - failed} passed, ${failed} failed`);
+process.exitCode = failed || !results.length ? 1 : 0;
