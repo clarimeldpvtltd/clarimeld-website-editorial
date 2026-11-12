@@ -10,7 +10,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "typecheck": "tsc --noEmit",
     "check:licenses": "node scripts/check-licenses.mjs",
-    "test:browser": "node scripts/verify-browser.mjs",
+    "test:browser": "node scripts/run-qa.mjs",
     "generate:pages": "node scripts/generate-pages.mjs"
   },
   "dependencies": {
