@@ -1,0 +1,4 @@
+# Hostinger (LiteSpeed/Apache) — serve AVIF with its correct media type (the host default is text/plain).
+AddType image/avif .avif
+AddType image/webp .webp
+AddType font/woff2 .woff2
