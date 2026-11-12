@@ -1,0 +1,84 @@
+# Builds the site from this branch with the project's own commands, records the results,
+# and publishes the verified output to the `build-output` branch. It deploys nothing.
+name: Build and verify release
+
+on:
+  push:
+    branches: [release-candidate]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Record environment
+        run: |
+          mkdir -p ci-logs
+          {
+            echo "source branch: ${GITHUB_REF_NAME}"
+            echo "workflow commit: ${GITHUB_SHA}"
+            echo "runner: $(uname -a)"
+            echo "node: $(node -v)  npm: $(npm -v)"
+            cat SOURCE_COMMIT.txt 2>/dev/null || true
+          } | tee ci-logs/environment.txt
+
+      - name: Install locked dependencies (npm ci)
+        run: set -o pipefail; npm ci 2>&1 | tee ci-logs/npm-ci.log
+
+      - name: Typecheck
+        id: typecheck
+        continue-on-error: true
+        run: set -o pipefail; npm run typecheck 2>&1 | tee ci-logs/typecheck.log
+
+      - name: Vite production build
+        id: build
+        continue-on-error: true
+        run: set -o pipefail; npx vite build 2>&1 | tee ci-logs/build.log
+
+      - name: Licence check
+        id: licences
+        continue-on-error: true
+        run: set -o pipefail; npm run check:licenses 2>&1 | tee ci-logs/licences.log
+
+      - name: Record results and file manifest
+        if: always()
+        run: |
+          {
+            echo "typecheck: ${{ steps.typecheck.outcome }}"
+            echo "vite build: ${{ steps.build.outcome }}"
+            echo "licence check: ${{ steps.licences.outcome }}"
+          } | tee ci-logs/results.txt
+          if [ -d dist ]; then (cd dist && find . -type f | sort | xargs sha256sum) > ci-logs/dist-sha256.txt; fi
+
+      - name: Publish output to build-output branch
+        if: always()
+        run: |
+          set -e
+          rm -rf /tmp/out && mkdir /tmp/out
+          if [ -d dist ]; then cp -r dist /tmp/out/dist; fi
+          cp -r ci-logs /tmp/out/ci-logs
+          cd /tmp/out
+          git init -q -b build-output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Build output for ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" build-output
+
+      - name: Fail the run if any required check failed
+        if: always()
+        run: |
+          test "${{ steps.typecheck.outcome }}" = success
+          test "${{ steps.build.outcome }}" = success
+          test "${{ steps.licences.outcome }}" = success

@@ -1,0 +1,74 @@
+/* Self-hosted Latin variable fonts (SIL Open Font License 1.1) */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --paper: #f8f7fc;
+  --paper-2: #efedf8;
+  --white: #ffffff;
+  --ink: #120e24;
+  --ink-2: #1d1736;
+  --ink-3: #2b2450;
+
+  /* Text */
+  --text: #1a1530;
+  --text-muted: #5b5575;
+  --text-on-ink: #f4f2ff;
+  --text-on-ink-muted: #bdb7da;
+  --line: #e2dff0;
+  --line-on-ink: rgba(255, 255, 255, 0.14);
+
+  /* Brand spectrum, taken from the logo mark */
+  --magenta: #c14bff;
+  --violet: #6d45f2;
+  --cobalt: #1f63e6;
+  --sky: #3b8bff;
+  --orchid: #a62ccb;
+  --amber: #ffb020;
+  --amber-deep: #9a5b00;
+
+  /* Product colours */
+  --pm: #6d45f2;
+  --pm-tint: #efeaff;
+  --pm-soft: #cdbfff;
+  --writer: #1f63e6;
+  --writer-tint: #e7f0ff;
+  --writer-soft: #b3cdff;
+  --public: #a62ccb;
+  --public-tint: #f8e9fd;
+  --public-soft: #e3b4f3;
+
+  --gradient-brand: linear-gradient(115deg, #c14bff 0%, #6d45f2 48%, #2f7bff 100%);
+  --gradient-cta: linear-gradient(115deg, #a93fe6 0%, #6d45f2 50%, #2563eb 100%); /* white text passes 4.5:1 across the whole ramp */
+  --gradient-text: linear-gradient(100deg, #b13cf5 0%, #6d45f2 50%, #2a73f7 100%);
+
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --shadow-s: 0 1px 2px rgba(26, 21, 48, 0.06), 0 2px 8px rgba(26, 21, 48, 0.05);
+  --shadow-m: 0 12px 32px -8px rgba(60, 40, 140, 0.22), 0 2px 6px rgba(26, 21, 48, 0.06);
+  --shadow-l: 0 40px 80px -24px rgba(60, 40, 140, 0.35), 0 8px 20px rgba(26, 21, 48, 0.08);
+
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --header-h: 68px;
+  --container: 1200px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section-y: clamp(72px, 10vw, 136px);
+}

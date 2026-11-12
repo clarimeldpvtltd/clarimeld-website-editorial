@@ -1,0 +1,12 @@
+.access { background: var(--paper-2); position: relative; overflow: hidden; }
+.access::before { content: ''; position: absolute; inset: auto -10% -40% auto; width: 60%; height: 100%; background: radial-gradient(closest-side, rgba(193, 75, 255, 0.18), transparent), radial-gradient(closest-side at 80% 20%, rgba(59, 139, 255, 0.18), transparent); pointer-events: none; }
+.access-grid { position: relative; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 6vw, 88px); align-items: start; }
+.access-copy { display: grid; gap: 20px; position: sticky; top: calc(var(--header-h) + 32px); }
+.access-points { display: grid; gap: 10px; color: var(--text-muted); }
+.access-points li { display: flex; gap: 10px; align-items: center; }
+.access-points svg { width: 18px; height: 18px; color: var(--violet); flex: none; }
+.form-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-l); padding: clamp(22px, 3.4vw, 40px); box-shadow: var(--shadow-m); }
+.contact-card { display: grid; gap: 18px; justify-items: start; }
+.contact-card p { color: var(--text-muted); max-width: 52ch; }
+.contact-mail { max-width: 100%; overflow-wrap: anywhere; text-align: center; }
+@media (max-width: 900px) { .access-grid { grid-template-columns: 1fr; } .access-copy { position: static; } }

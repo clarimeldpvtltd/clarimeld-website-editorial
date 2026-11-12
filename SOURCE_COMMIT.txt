@@ -1,0 +1,3 @@
+source project commit: fd2a8e41a2c1296fba3ac634ebc55f5c1b974a41 (publish/contact-link-replacement)
+included: pages, src, public (without connectors README), vite/ts config, package files, scripts/check-licenses.mjs
+excluded: docs, QA and generator scripts, private notes
