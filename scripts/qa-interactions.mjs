@@ -58,7 +58,7 @@ await page.click('[data-topology-mode=connected]'); ok('Suite toggle switches to
 await page.goto(B + '/', { waitUntil: 'networkidle' });
 await page.click('[data-gap-mode=connected]'); ok('Home Separate/Connected toggle', (await page.getAttribute('.gap-diagram', 'data-state')) === 'connected' && (await page.getAttribute('[data-gap-mode=connected]', 'aria-pressed')) === 'true');
 
-// Contact section (the demo form was removed: nothing on the site collects or sends visitor details)
+// Contact section (the demo form was removed: the site has no contact form; visitors write from their own mail app)
 let requests = []; page.on('request', (r) => { if (r.method() !== 'GET') requests.push(r.url()); });
 for (const [url, subject] of [['/', null], ['/pm-os.html', 'Interest in PM OS'], ['/writer-os.html', 'Interest in Writer OS'], ['/public-os.html', 'Interest in Public OS'], ['/suite.html', 'Interest in Clarimeld Suite']]) {
   await page.goto(B + url, { waitUntil: 'networkidle' });

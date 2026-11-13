@@ -1,0 +1,14 @@
+/* Large-text / narrow-viewport containment.
+   Added so that content stays inside the viewport at 200% text size (e.g. 320px and
+   390px wide). Everything here only relaxes sizing (wrapping, shrinking, stacking);
+   it does not change the layout at normal text size. Imported last in main.css. */
+.display, .h2, .h3, .lead, .section-head > *, .page-hero-copy > *, .hero-copy > * { overflow-wrap: anywhere; }
+main .btn { max-width: 100%; white-space: normal; }
+.mode-switch { max-width: 100%; flex-wrap: wrap; }
+.hs-stage { white-space: normal; }
+.hs-head, .tabs-mini { flex-wrap: wrap; }
+.lane-head, .lane-head *, .stage-chip, .stage-chip * { overflow-wrap: anywhere; min-width: 0; }
+/* Journey Previous/Next row: stack when the journey column is narrower than 13em
+   (only reached when text is enlarged; 320px at normal size is wider than this). */
+.journey { container-type: inline-size; }
+@container (max-width: 13em) { .js .j-nav { grid-template-columns: minmax(0, 1fr); } }

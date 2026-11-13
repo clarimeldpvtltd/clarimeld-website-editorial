@@ -94,3 +94,5 @@
 /* A long idea title wraps beside its vote mark instead of dropping below it */
 .who:has(> .vote) { flex-wrap: nowrap; align-items: flex-start; }
 .who:has(> .vote) .vote { flex: none; }
+/* A reviewer's correction: struck-through wording carries a text label ("First draft", "Corrected"), so meaning never depends on colour alone. */
+.del { text-decoration: line-through; text-decoration-thickness: 1.5px; color: var(--text-muted); }

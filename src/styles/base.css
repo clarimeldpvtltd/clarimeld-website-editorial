@@ -158,3 +158,7 @@ html[data-motion='paused'] .js .reveal, html[data-motion='paused'].js .reveal { 
 /* Long headlines may break inside a word only when the text size is very large and the screen very narrow */
 .display, .h2, .h3, .lead, .section-head > *, .page-hero-copy > *, .hero-copy > *, .value-text, .ai-note { overflow-wrap: anywhere; }
 .hero-grid > *, .page-hero-grid > * { min-width: 0; }
+/* The wordmark is also hidden when the header itself is narrow measured in text size, so larger text settings
+   keep the Contact button and menu button inside the viewport. 20em (the header inherits the 17px body text) equals the 380px rule at default text size. */
+.header-inner { container-type: inline-size; }
+@container (max-width: 20em) { .brand-lockup span { display: none; } }
