@@ -76,6 +76,7 @@
 .pipeline strong { font-size: 1.05rem; letter-spacing: -0.01em; }
 .pipeline span { color: var(--text-muted); font-size: 0.9375rem; line-height: 1.4; max-width: 15em; }
 .pipeline--pm { --accent: var(--pm); } .pipeline--writer { --accent: var(--writer); } .pipeline--public { --accent: var(--public); }
+.pipeline--n6 { --n: 6; }
 @media (max-width: 800px) {
   .pipeline { grid-template-columns: 1fr; gap: 24px; }
   .pipeline::before { left: 28px; right: auto; top: 28px; bottom: 28px; width: 3px; height: auto; }
@@ -177,3 +178,18 @@
 .connector-tile img { flex: none; max-width: 100%; height: auto; }
 .connector-note { font-size: 0.8125rem; color: var(--text-muted); max-width: 46rem; }
 
+
+/* Value sections: why the work is hard, and what gets easier for the person, their team and leadership */
+.value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-block: 1px solid var(--line); margin-top: 8px; }
+.value-grid li { padding: 26px 28px 26px 0; display: grid; gap: 8px; align-content: start; }
+.value-grid li + li { padding-left: 28px; border-left: 1px solid var(--line); }
+.value-grid strong { font-size: 1.15rem; letter-spacing: -0.015em; }
+.value-who { font: 650 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.value-text { color: var(--text); }
+.value-text b { font-weight: 650; }
+.ai-note { margin-top: 24px; padding: 16px 20px; max-width: 78ch; border-radius: var(--radius-m); background: var(--paper-2); color: var(--text); }
+@media (max-width: 800px) {
+  .value-grid { grid-template-columns: 1fr; }
+  .value-grid li, .value-grid li + li { padding: 20px 0; border-left: 0; }
+  .value-grid li + li { border-top: 1px solid var(--line); }
+}

@@ -40,10 +40,10 @@ await p.close();
 p = await open({ viewport: { width: 1440, height: 900 } }, '/');
 await p.waitForTimeout(4600);
 const links = await p.$$eval('.hs-prod', (a) => a.map((x) => x.getAttribute('href')));
-ok('Hero card titles link to the three product pages', JSON.stringify(links) === JSON.stringify(['/public-os.html', '/pm-os.html', '/writer-os.html']), links.join());
+ok('Hero card titles link to the product pages, in story order (PM OS twice, then Writer OS, then Public OS)', JSON.stringify(links) === JSON.stringify(['/pm-os.html', '/pm-os.html', '/writer-os.html', '/public-os.html']), links.join());
 await p.focus('.hs-card--pm .hs-prod');
 ok('Hero product link shows a focus outline', (await p.$eval('.hs-card--pm .hs-prod', (e) => getComputedStyle(e).outlineStyle)) !== 'none');
-ok('Hero illustration text is announced once (screen-reader sentences present, decorative body hidden)', (await p.$$eval('.hs .sr-only', (e) => e.length)) === 3 && (await p.$$eval('.hs-body[aria-hidden="true"]', (e) => e.length)) === 3);
+ok('Hero illustration text is announced once (screen-reader sentences present, decorative body hidden)', (await p.$$eval('.hs .sr-only', (e) => e.length)) === 4 && (await p.$$eval('.hs-body[aria-hidden="true"]', (e) => e.length)) === 4);
 
 // Connector section
 ok('Connector section present on Home and Suite, before the contact section', (await p.$$('#connector')).length === 1 && (await s.$$('#connector')).length === 1 && (await p.$eval('#connector', (e) => e.nextElementSibling?.id)) === 'contact');
@@ -54,14 +54,14 @@ ok('Connector section lists 17 tools in one flat list, each with a visible name'
 ok('Connector logo-and-name tiles: every logo is decorative (alt="") beside its visible name, has width and height, and loads; no logo without a name', tiles.every((x) => x.imgs.every((i) => i.alt === '' && i.w && i.h && i.ok)) && tiles.every((x) => x.name), `${tiles.filter((x) => x.imgs.length).length} of 17 tiles currently carry a logo`);
 ok('Connector tiles carry no per-tool status, badge or link', (await p.$$('#connector .connector-tile .tag, #connector .connector-tile a, #connector .connector-tile button')).length === 0);
 const cText = await p.$eval('#connector', (e) => e.textContent);
-ok('Connector copy frames the section as a vision with examples, not available or committed connections', /Our vision/.test(cText) && /would link/.test(cText) && /not a list of available or committed connections/.test(cText));
+ok('Connector copy frames the section as a vision with examples, not available or committed connections', /Our vision/.test(cText) && /would link/.test(cText) && /confirmed, available or committed connection/.test(cText));
 ok('Connector wording does not claim live connections', !/\blive\b|available now|supported|integrates with|partner(?!ship)/i.test(await p.$eval('#connector', (e) => e.textContent)));
 
 // Review pass: hero wording, non-link Writer line, Suite hero labels, no text under 12px
 const heroText = await p.$eval('.hero .hs', (e) => e.textContent);
-ok('Home hero says "Tax export" with no stray option letter', /Tax export/.test(heroText) && !/A · Tax export/.test(heroText));
+ok('Home hero shows the four linked moments of the Northline example', /Regional teams need different approval paths/.test(heroText) && /Start with regional approval paths/.test(heroText) && /assign an approval path/.test(heroText) && /Regional approval paths/.test(heroText) && (await p.$$('.hs .hs-card')).length === 4);
 ok('Writer hero line is plain text (no link, not underlined)', (await p.$$eval('.hs-draft', (e) => e.length === 1 && !e[0].closest('a') && getComputedStyle(e[0]).textDecorationLine === 'none')));
-ok('Suite hero cards carry their lane taglines, no placeholder bars', (await s.$$eval('.ss .ss-line', (e) => e.map((x) => x.textContent))).join('|') === 'Hear customers, share what is next|Decide what to build and why|Write with the sources beside you' && (await s.$$('.ss .sk')).length === 0);
+ok('Suite hero cards carry their lane taglines, no placeholder bars', (await s.$$eval('.ss .ss-line', (e) => e.map((x) => x.textContent))).join('|') === 'Hear customers, share what is next|Decide what to build, and why|Write from what was agreed' && (await s.$$('.ss .sk')).length === 0);
 for (const [label, pg] of [['Home', p], ['Suite', s]]) {
   const tiny = await pg.evaluate(() => [...document.querySelectorAll('body *')].filter((e) => [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) && e.getClientRects().length && !e.closest('.sr-only') && parseFloat(getComputedStyle(e).fontSize) < 12).length);
   ok(`${label}: no visible text smaller than 12 px`, tiny === 0, String(tiny));
@@ -88,7 +88,7 @@ for (const [label, pg] of [['Home', p], ['Suite', s]]) {
   const nj = await b.newContext({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: false }); const np = await nj.newPage();
   await np.goto(B + '/suite.html', { waitUntil: 'load' });
   const w = await np.$$eval('#journey .j-panel', (e) => e.map((x) => Math.round(x.getBoundingClientRect().width)));
-  ok('No-JS: journey steps are visible and laid out across the page', w.length === 11 && w.every((x) => x > 250) && new Set(await np.$$eval('#journey .j-panel', (e) => e.map((x) => Math.round(x.getBoundingClientRect().left)))).size >= 2, w.join(','));
+  ok('No-JS: journey steps are visible and laid out across the page', w.length === 9 && w.every((x) => x > 250) && new Set(await np.$$eval('#journey .j-panel', (e) => e.map((x) => Math.round(x.getBoundingClientRect().left)))).size >= 2, w.join(','));
   ok('No-JS: reveal content is not hidden', await np.$$eval('.reveal', (e) => e.every((x) => +getComputedStyle(x).opacity === 1)));
   await nj.close();
 }

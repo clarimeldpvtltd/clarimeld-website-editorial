@@ -53,9 +53,9 @@ main:focus { outline: none; }
 .on-ink .gradient-text { background-image: linear-gradient(100deg, #e07bff 0%, #9d7bff 50%, #6aa6ff 100%); }
 .kicker {
   font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
-  display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 8px; color: var(--text-muted); max-width: 100%; overflow-wrap: anywhere;
 }
-.kicker::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: currentColor; }
+.kicker::before { content: ''; flex: none; width: 18px; height: 2px; border-radius: 2px; background: currentColor; }
 .kicker--pm { color: var(--pm); } .kicker--writer { color: var(--writer); } .kicker--public { color: var(--public); }
 .on-ink .kicker { color: var(--text-on-ink-muted); }
 .section-head { display: grid; gap: 16px; max-width: 46rem; }
@@ -154,3 +154,7 @@ html[data-motion='paused'] .js .reveal, html[data-motion='paused'].js .reveal { 
   .btn-gradient, .btn-primary { border-color: ButtonText; }
   .gradient-text { color: CanvasText; background: none; }
 }
+
+/* Long headlines may break inside a word only when the text size is very large and the screen very narrow */
+.display, .h2, .h3, .lead, .section-head > *, .page-hero-copy > *, .hero-copy > *, .value-text, .ai-note { overflow-wrap: anywhere; }
+.hero-grid > *, .page-hero-grid > * { min-width: 0; }

@@ -18,11 +18,10 @@
 .public-body { grid-template-columns: 1.25fr 1fr; }
 @media (max-width: 760px) {
   .pm-body, .writer-body { grid-template-columns: 1fr; }
-  .pm-body .pane:first-child, .writer-body .pane:first-child, .writer-body .pane:last-child { display: none; }
   .pane + .pane { border-left: 0; }
   .public-body { grid-template-columns: 1fr; }
-  .public-body .pane + .pane { border-top: 1px solid var(--line); }
-  .pm-body .pane + .pane { border-top: 0; }
+  /* all panes stay visible when stacked: the evidence, source, review note and correction are the point of each illustration */
+  .pm-body .pane + .pane, .writer-body .pane + .pane, .public-body .pane + .pane { border-top: 1px solid var(--line); }
 }
 
 /* shared atoms */
@@ -84,3 +83,14 @@
 .single-pane { padding: 16px; display: grid; gap: 10px; }
 .arrow-chip { display: inline-flex; align-items: center; gap: 8px; }
 .arrow-chip svg { width: 14px; height: 14px; color: var(--text-muted); }
+
+/* Short muted line under an item title in the example illustrations (same type scale as .tag) */
+.item-sub { font-size: 0.75rem; line-height: 1.4; color: var(--text-muted); font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+
+/* Small section labels inside single-pane journey screens (same as .pane h4) */
+.single-pane h4 { margin: 0; font: 650 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.single-pane .scope-list { margin: 0; padding: 0; list-style: none; }
+
+/* A long idea title wraps beside its vote mark instead of dropping below it */
+.who:has(> .vote) { flex-wrap: nowrap; align-items: flex-start; }
+.who:has(> .vote) .vote { flex: none; }

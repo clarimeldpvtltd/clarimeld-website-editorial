@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="__CSP_CONTENT__" />
     <title>PM OS | Clarimeld</title>
-    <meta name="description" content="PM OS is a workspace for product teams to gather signals, compare options, record decisions and keep scope clear." />
+    <meta name="description" content="PM OS brings customer evidence, options, the reason for a decision and what was deferred into one place, so product, engineering and design share the same context." />
     <link rel="canonical" href="https://clarimeld.com/pm-os.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Clarimeld" />
     <meta property="og:title" content="PM OS | Clarimeld" />
-    <meta property="og:description" content="PM OS is a workspace for product teams to gather signals, compare options, record decisions and keep scope clear." />
+    <meta property="og:description" content="PM OS brings customer evidence, options, the reason for a decision and what was deferred into one place, so product, engineering and design share the same context." />
     <meta property="og:url" content="https://clarimeld.com/pm-os.html" />
     <meta property="og:image" content="https://clarimeld.com/brand/clarimeld-logo-1024.png" />
     <meta name="twitter:card" content="summary" />
@@ -52,40 +52,60 @@
         <div class="container page-hero-grid">
           <div class="page-hero-copy">
             <a class="crumb" href="/">← Clarimeld</a>
-            <span class="kicker kicker--pm">For product teams</span>
-            <h1 class="display" id="page-heading">From scattered signals to <span class="gradient-text">agreed scope.</span></h1>
-            <p class="lead">Gather evidence, compare options, record why, and keep scope clear.</p>
+            <span class="kicker kicker--pm">For product managers, designers and product leaders</span>
+            <h1 class="display" id="page-heading">From competing needs to a <span class="gradient-text">decision your team can find.</span></h1>
+            <p class="lead">Bring customer evidence, options, the reason you chose and what you deferred into one place, so product, engineering and design start from the same context.</p>
             <div class="hero-actions">
               <a class="btn btn-gradient" href="#contact">Contact us</a>
               <a class="btn btn-ghost" href="/suite.html">How it connects</a>
             </div>
           </div>
           <div class="page-hero-visual">
-        <figure class="app app--pm " role="img" aria-label="Illustration of PM OS. Customer signals on the left. Two options in the middle: one chosen, one deferred with a recorded reason. A locked PRD snapshot on the right listing what is in and out of scope.">
-          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northstar Ledger · Tax export</span><span class="app-tag">Illustration</span></div>
+        <figure class="app app--pm " role="img" aria-label="Illustration of PM OS for the fictional company Northline Workflows. Evidence on the left: regional teams need different approval paths; a single global rule does not fit every customer; and a separate request to script custom approval rules. In the middle, two options: regional approval paths are chosen because they address a shared need while keeping the first release manageable; custom rule scripting is deferred because it needs further discovery. On the right, what the team sees: the decision to start with regional approval paths, what is in the first release, what is not, and an open question about terminology. The product lead decides.">
+          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northline Workflows · Approval controls</span><span class="app-tag">Illustration</span></div>
           <div class="app-body pm-body" aria-hidden="true">
             <div class="pane">
-              <h4>Signals</h4>
-              <div class="item"><span class="item-title">Export for accountants</span><div class="stack"><span class="sk w80"></span><span class="sk w50"></span></div></div>
-              <div class="item item--muted"><span class="item-title">Payroll privacy</span><div class="stack"><span class="sk w60"></span></div></div>
-              <div class="item item--muted"><span class="item-title">Audit trail</span><div class="stack"><span class="sk w70"></span></div></div>
+              <h4>Evidence</h4>
+              <div class="item"><span class="item-title">Regional teams need different approval paths.</span><span class="tag tag--public">Customer</span></div>
+              <div class="item"><span class="item-title">A single global rule doesn't fit every customer.</span><span class="tag">Support note</span></div>
+              <div class="item item--muted"><span class="item-title">Let us script our own approval rules.</span><span class="tag">Separate request</span></div>
             </div>
             <div class="pane">
               <h4>Options</h4>
-              <div class="item item--active"><div class="item-row"><span class="item-title">A · Tax export</span><span class="tag tag--pm">Chosen</span></div><div class="stack"><span class="sk w100"></span><span class="sk w60"></span></div></div>
-              <div class="item item--muted"><div class="item-row"><span class="item-title">B · Multi-entity</span><span class="tag">Deferred</span></div><div class="stack"><span class="sk w80"></span><span class="sk w40"></span></div><span class="tag">Reason recorded</span></div>
+              <div class="item item--active"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--pm">Chosen</span></div><span class="item-sub">Addresses a shared need while keeping the first release manageable.</span></div>
+              <div class="item item--muted"><div class="item-row"><span class="item-title">Custom rule scripting</span><span class="tag">Deferred</span></div><span class="item-sub">Needs further discovery.</span></div>
             </div>
             <div class="pane">
-              <h4>PRD-104</h4>
-              <div class="lock-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 11h12v9H6zM9 11V8a3 3 0 0 1 6 0v3"/></svg> Snapshot locked</div>
-              <ul class="scope-list"><li>Tax export</li><li>Accountant access</li></ul>
-              <ul class="scope-list scope-list--out"><li>Employee payroll</li><li>Multi-entity</li></ul>
+              <h4>Decision record</h4>
+              <p class="item-title">Start with regional approval paths.</p>
+              <span class="item-sub">First release</span>
+              <ul class="scope-list"><li>Approval paths by region</li></ul>
+              <span class="item-sub">Not now</span>
+              <ul class="scope-list scope-list--out"><li>Custom rule scripting</li></ul>
+              <div class="lock-row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 5h12l-2 4 2 4H5"/></svg> Open: what do we call a region's approval path?</div>
               <span class="tag tag--amber">Product lead decides</span>
             </div>
           </div>
         </figure>
-            <span class="caption-illustrative">Illustration. Northstar Ledger is a fictional company.</span>
+            <span class="caption-illustrative">Illustrative example with fictional data. Northline Workflows is a fictional company, not a customer story or a product screen.</span>
           </div>
+        </div>
+      </section>
+
+
+      <section class="section section--tight value" aria-labelledby="value-heading-pm">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker kicker--pm">Why it matters</span>
+            <h2 class="h2" id="value-heading-pm">Hard to decide well when the evidence is everywhere.</h2>
+            <p class="lead">In an established software company, feedback sits in sales calls, support tickets and chat threads. Different customers want different things, and by the time something is decided, the reasoning is scattered.</p>
+          </div>
+          <ul class="value-grid reveal" data-delay="1">
+            <li><span class="value-who">For you</span><span class="value-text">See competing needs side by side, make the call, and write down why.</span></li>
+            <li><span class="value-who">For your team</span><span class="value-text">Engineering and design read the decision, the scope and the open questions in one place, not a chat transcript.</span></li>
+            <li><span class="value-who">For leadership</span><span class="value-text">See what was chosen, what was deferred and why, and revisit it when new evidence arrives.</span></li>
+          </ul>
+          <p class="ai-note reveal" data-delay="2">Already use ChatGPT or Claude? Keep using them to think and draft. PM OS is for the record around that thinking: the evidence, the decision and the deferred option, kept where the team can revisit and share them. Assistive AI helps organise. Product managers choose.</p>
         </div>
       </section>
 
@@ -93,14 +113,14 @@
         <div class="container">
           <div class="section-head section-head--center reveal">
             <span class="kicker kicker--pm">How it flows</span>
-            <h2 class="h2" id="flow-heading">Five steps, one thread.</h2>
+            <h2 class="h2" id="flow-heading">From evidence to a shared decision.</h2>
           </div>
-          <ol class="pipeline pipeline--pm reveal" data-delay="1">
-            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span><strong>Signals</strong><span>Feedback and notes in one place</span></li>
+          <ol class="pipeline pipeline--pm pipeline--n5 reveal" data-delay="1">
+            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span><strong>Signals</strong><span>Customer needs side by side</span></li>
             <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6M12 9c0 4-6 4-6 9M12 9c0 4 6 4 6 9"/></svg></span><strong>Options</strong><span>Compare approaches, record why</span></li>
-            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span><strong>Scope</strong><span>PRDs with what is in and out</span></li>
-            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 5h12l-2 4 2 4H5"/></svg></span><strong>Delivery</strong><span>Dependencies and milestones</span></li>
-            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></svg></span><strong>Outcomes</strong><span>Review response after release</span></li>
+            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg></span><strong>Scope</strong><span>What is in, out and deferred</span></li>
+            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 5h12l-2 4 2 4H5"/></svg></span><strong>Delivery</strong><span>Dependencies and milestones people track</span></li>
+            <li><span class="pip-dot"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></svg></span><strong>Outcomes</strong><span>Review how customers responded</span></li>
           </ol>
         </div>
       </section>
@@ -130,7 +150,7 @@
           </div>
           <div class="form-card contact-card reveal" data-delay="1">
             <h3 class="h3">Write to us</h3>
-            <p>Send us an email at the address below. The button opens your own email app; this website does not collect or send your details.</p>
+            <p>Send us an email at the address below. The button opens your own email app, and you send the email from there. This website has no contact form.</p>
             <a class="btn btn-gradient contact-mail" href="mailto:info@clarimeld.com?subject=Interest%20in%20PM%20OS">info@clarimeld.com</a>
           </div>
         </div>

@@ -129,7 +129,7 @@ const accessSection = (heading = 'Get in touch', topic = '') => `
           </div>
           <div class="form-card contact-card reveal" data-delay="1">
             <h3 class="h3">Write to us</h3>
-            <p>Send us an email at the address below. The button opens your own email app; this website does not collect or send your details.</p>
+            <p>Send us an email at the address below. The button opens your own email app, and you send the email from there. This website has no contact form.</p>
             <a class="btn btn-gradient contact-mail" href="mailto:info@clarimeld.com${topic ? `?subject=${encodeURIComponent(topic)}` : ''}">info@clarimeld.com</a>
           </div>
         </div>
@@ -137,77 +137,74 @@ const accessSection = (heading = 'Get in touch', topic = '') => `
 `;
 
 /* ----------------------------------------------------- product illustrations */
-const FICTION = 'Illustration. Northstar Ledger is a fictional company.';
+const FICTION = 'Illustrative example with fictional data. Northline Workflows is a fictional company, not a customer story or a product screen.';
 
 const pmApp = (extra = '') => `
-        <figure class="app app--pm ${extra}" role="img" aria-label="Illustration of PM OS. Customer signals on the left. Two options in the middle: one chosen, one deferred with a recorded reason. A locked PRD snapshot on the right listing what is in and out of scope.">
-          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northstar Ledger · Tax export</span><span class="app-tag">Illustration</span></div>
+        <figure class="app app--pm ${extra}" role="img" aria-label="Illustration of PM OS for the fictional company Northline Workflows. Evidence on the left: regional teams need different approval paths; a single global rule does not fit every customer; and a separate request to script custom approval rules. In the middle, two options: regional approval paths are chosen because they address a shared need while keeping the first release manageable; custom rule scripting is deferred because it needs further discovery. On the right, what the team sees: the decision to start with regional approval paths, what is in the first release, what is not, and an open question about terminology. The product lead decides.">
+          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northline Workflows · Approval controls</span><span class="app-tag">Illustration</span></div>
           <div class="app-body pm-body" aria-hidden="true">
             <div class="pane">
-              <h4>Signals</h4>
-              <div class="item"><span class="item-title">Export for accountants</span><div class="stack"><span class="sk w80"></span><span class="sk w50"></span></div></div>
-              <div class="item item--muted"><span class="item-title">Payroll privacy</span><div class="stack"><span class="sk w60"></span></div></div>
-              <div class="item item--muted"><span class="item-title">Audit trail</span><div class="stack"><span class="sk w70"></span></div></div>
+              <h4>Evidence</h4>
+              <div class="item"><span class="item-title">Regional teams need different approval paths.</span><span class="tag tag--public">Customer</span></div>
+              <div class="item"><span class="item-title">A single global rule doesn't fit every customer.</span><span class="tag">Support note</span></div>
+              <div class="item item--muted"><span class="item-title">Let us script our own approval rules.</span><span class="tag">Separate request</span></div>
             </div>
             <div class="pane">
               <h4>Options</h4>
-              <div class="item item--active"><div class="item-row"><span class="item-title">A · Tax export</span><span class="tag tag--pm">Chosen</span></div><div class="stack"><span class="sk w100"></span><span class="sk w60"></span></div></div>
-              <div class="item item--muted"><div class="item-row"><span class="item-title">B · Multi-entity</span><span class="tag">Deferred</span></div><div class="stack"><span class="sk w80"></span><span class="sk w40"></span></div><span class="tag">Reason recorded</span></div>
+              <div class="item item--active"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--pm">Chosen</span></div><span class="item-sub">Addresses a shared need while keeping the first release manageable.</span></div>
+              <div class="item item--muted"><div class="item-row"><span class="item-title">Custom rule scripting</span><span class="tag">Deferred</span></div><span class="item-sub">Needs further discovery.</span></div>
             </div>
             <div class="pane">
-              <h4>PRD-104</h4>
-              <div class="lock-row">${icon('lock', 14)} Snapshot locked</div>
-              <ul class="scope-list"><li>Tax export</li><li>Accountant access</li></ul>
-              <ul class="scope-list scope-list--out"><li>Employee payroll</li><li>Multi-entity</li></ul>
+              <h4>Decision record</h4>
+              <p class="item-title">Start with regional approval paths.</p>
+              <span class="item-sub">First release</span>
+              <ul class="scope-list"><li>Approval paths by region</li></ul>
+              <span class="item-sub">Not now</span>
+              <ul class="scope-list scope-list--out"><li>Custom rule scripting</li></ul>
+              <div class="lock-row">${icon('flag', 14)} Open: what do we call a region's approval path?</div>
               <span class="tag tag--amber">Product lead decides</span>
             </div>
           </div>
         </figure>`;
 
 const writerApp = (extra = '') => `
-        <figure class="app app--writer ${extra}" role="img" aria-label="Illustration of Writer OS. A pinned source on the left. A draft in the middle with one sentence flagged for an editor to check against the source. Output formats on the right.">
-          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Release note · Tax export</span><span class="app-tag">Illustration</span></div>
+        <figure class="app app--writer ${extra}" role="img" aria-label="Illustration of Writer OS for the fictional company Northline Workflows. A brief asks the writer to explain how administrators select a region and assign an approval path. The source beside it is the decision summary: start with regional approval paths; custom rule scripting needs further discovery. The draft sentence says administrators select a region and assign an approval path, with the term approval path marked. The review note says to confirm the terminology with the product owner before publication. The review is still open and an editor decides.">
+          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northline Workflows · Guidance</span><span class="app-tag">Illustration</span></div>
           <div class="app-body writer-body" aria-hidden="true">
             <div class="pane">
-              <h4>Sources</h4>
-              <div class="doc-pin"><strong>${icon('book', 14)} PRD-104</strong><span class="sk w80"></span><span class="sk w50"></span></div>
-              <div class="item item--muted"><span class="item-title">Help centre page</span><span class="sk w60"></span></div>
+              <h4>Brief and source</h4>
+              <div class="item"><span class="item-title">Explain how administrators select a region and assign an approval path.</span><span class="tag tag--writer">Brief</span></div>
+              <div class="doc-pin"><strong>${icon('book', 14)} Decision summary · Regional approval paths</strong><span class="item-sub">Start with regional approval paths. Custom rule scripting needs further discovery.</span></div>
             </div>
             <div class="pane">
               <h4>Draft</h4>
-              <div class="stack"><span class="sk sk--dark w60"></span><span class="sk w100"></span><span class="sk w80"></span></div>
-              <p class="item-title"><span class="hl">Export your books for your accountant.</span></p>
-              <div class="stack"><span class="sk w100"></span><span class="sk w70"></span></div>
-              <div class="flag">Advisory flag · payroll is out of scope in PRD-104</div>
+              <p class="item-title">Administrators select a region and assign an <span class="hl">approval path</span>.</p>
+              <div class="flag">Review note · Confirm the terminology with the product owner before publication.</div>
             </div>
             <div class="pane">
-              <h4>Formats</h4>
-              <span class="tag tag--writer">Article</span>
-              <span class="tag tag--writer">Release note</span>
-              <span class="tag tag--writer">Email kit</span>
-              <span class="tag tag--amber">Editor reviews</span>
+              <h4>Review</h4>
+              <div class="item"><div class="item-row"><span class="item-title">Terminology</span><span class="tag">To confirm</span></div><span class="item-sub">With the product owner</span></div>
+              <span class="tag tag--amber">Editor decides</span>
             </div>
           </div>
         </figure>`;
 
 const publicApp = (extra = '') => `
-        <figure class="app app--public ${extra}" role="img" aria-label="Illustration of Public OS. A list of customer ideas with an idea under review. A changelog entry and a recipient review with a send button.">
-          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northstar Ledger · Customer hub</span><span class="app-tag">Illustration</span></div>
+        <figure class="app app--public ${extra}" role="img" aria-label="Illustration of Public OS for the fictional company Northline Workflows, with what customers see kept separate from the team's work. Customers see a request, regional teams need different approval paths, and a roadmap item, regional approval paths, marked under consideration. The team side holds an update draft titled regional approval paths, not published yet, and one item not shared yet: custom rule scripting, which needs further discovery. The team chooses what to share.">
+          <div class="app-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="app-title">Northline Workflows · Customer hub</span><span class="app-tag">Illustration</span></div>
           <div class="app-body public-body" aria-hidden="true">
             <div class="pane">
-              <div class="tabs-mini"><span class="on">Ideas</span><span>Roadmap</span><span>Changelog</span></div>
-              <div class="item item--public"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Export for outside accountants</span></div><div class="item-row"><span class="tag tag--public">Under review</span><span class="who"><span class="avatar"></span><span class="avatar avatar--b"></span><span class="avatar avatar--c"></span></span></div></div>
-              <div class="item"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Bulk invoice upload</span></div><span class="sk w60"></span></div>
-              <div class="item"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Dark mode</span></div><span class="sk w40"></span></div>
+              <h4>Customers see</h4>
+              <div class="tabs-mini"><span class="on">Requests</span><span>Roadmap</span><span>Updates</span></div>
+              <div class="item item--public"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Regional teams need different approval paths.</span></div></div>
+              <div class="item"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--public">Under consideration</span></div><span class="item-sub">Roadmap · a direction, not a date</span></div>
             </div>
             <div class="pane">
-              <h4>Tax export · Release note</h4>
-              <div class="stack"><span class="sk w100"></span><span class="sk w80"></span></div>
-              <h4>Recipients</h4>
-              <div class="who"><span class="check check--on">${icon('check', 10)}</span><span class="sk w60"></span></div>
-              <div class="who"><span class="check check--on">${icon('check', 10)}</span><span class="sk w50"></span></div>
-              <div class="who"><span class="check"></span><span class="sk w40"></span></div>
-              <span class="mini-btn mini-btn--amber">Send to reviewed group</span>
+              <h4>Your team</h4>
+              <div class="item"><div class="item-row"><span class="item-title">Update draft · Regional approval paths</span><span class="tag">Draft</span></div><span class="item-sub">Not published yet.</span></div>
+              <h4>Not shared yet</h4>
+              <div class="item item--muted"><span class="item-title">Custom rule scripting</span><span class="item-sub">Needs further discovery.</span></div>
+              <span class="tag tag--amber">Team chooses what to share</span>
             </div>
           </div>
         </figure>`;
@@ -218,132 +215,125 @@ const appFrame = (title, aria, body) => `<figure class="app" role="img" aria-lab
             <div class="single-pane" aria-hidden="true">${body}
             </div></figure>`;
 
-// The eleven beats of one fictional example. Every beat maps to documented stages in the capability source map
-// (see the private coverage map). `alone` = how the product works without the others; `branch` = an optional side path.
+// Nine narrative beats of one fictional example (Northline Workflows). They run in time order; they are a story, not a claim about how many formal stages a product has.
+// `when` = explicit chronology label. `alone` = how the product works without the others. `branch` = an optional side path.
 const JOURNEY = [
   {
-    key: 'ask', product: 'public', tag: 'Public OS', title: 'Customers ask',
-    text: 'Customers post ideas and vote. Your team moderates. A vote is a signal, not a promise.',
-    link: 'Starts in Public OS',
+    key: 'ask', product: 'public', tag: 'Public OS', when: 'Before the decision', title: 'Customers ask',
+    text: 'Customers describe what they need in their own words. A vote is a signal, not a promise.',
+    link: 'Starts in Public OS, or from your own notes',
     branch: ['Discussion and moderation', 'Your team merges duplicates and keeps threads on topic.'],
-    app: appFrame('Northstar Ledger · Ideas', 'Illustration of Public OS: a list of customer ideas, with one under review.', `
-              <div class="item item--public"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Export for outside accountants</span></div><span class="tag tag--public">Under review</span></div>
-              <div class="item"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Bulk invoice upload</span></div><span class="sk w60"></span></div>
-              <div class="item"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Dark mode</span></div><span class="sk w40"></span></div>`),
+    app: appFrame('Northline Workflows · Requests', 'Illustration of Public OS: two customer requests. Regional teams need different approval paths. Let us script our own approval rules. Requests also arrive in calls and support tickets, which can be added in the next step.', `
+              <div class="item item--public"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Regional teams need different approval paths.</span></div><span class="item-sub">Customer request</span></div>
+              <div class="item"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Let us script our own approval rules.</span></div><span class="item-sub">Customer request</span></div>
+              <span class="item-sub">Requests also arrive in calls and support tickets. Those come in next.</span>`),
   },
   {
-    key: 'signals', product: 'pm', tag: 'PM OS', title: 'Signals come together',
-    text: 'A product manager groups feedback, support tickets and customer notes, then judges what matters. Tools can help organise. A person decides.',
+    key: 'frame', product: 'pm', tag: 'PM OS', when: 'Before the decision', title: 'Frame the problem',
+    text: 'A product manager reads the evidence side by side. Some needs pull in different directions, so the first job is to understand the problem, not to create an idea.',
     alone: 'PM OS works from your own notes and tickets too. It does not need Public OS.',
     link: 'Optional link: Public OS → PM OS',
-    app: appFrame('Northstar Ledger · Signals', 'Illustration of PM OS: feedback, support tickets and customer notes grouped under one theme for a product manager to review.', `
-              <div class="item item--active"><div class="item-row"><span class="item-title">Theme: export for accountants</span><span class="tag tag--pm">Grouped for review</span></div><div class="who"><span class="tag tag--public">Customer ideas</span><span class="tag">Support tickets</span><span class="tag">Customer notes</span></div></div>
-              <div class="item item--muted"><div class="item-row"><span class="item-title">Theme: invoice bulk upload</span><span class="tag">Not reviewed yet</span></div></div>
-              <div class="item-row"><span class="sk w50"></span><span class="tag tag--amber">Product manager decides</span></div>`),
+    app: appFrame('Northline Workflows · Evidence', 'Illustration of PM OS: four pieces of evidence and the product question. Regional teams need different approval paths, from a customer conversation. A single global rule does not fit every customer, from a support note. Central administrators still want to see every approval path in one place, from a customer conversation. Let us script our own approval rules, a separate customer request. The question: how might administrators configure approval paths by region without creating separate workflows? The product manager decides what matters.', `
+              <div class="item"><div class="item-row"><span class="item-title">Regional teams need different approval paths.</span><span class="tag tag--public">Need</span></div><span class="item-sub">Customer conversation</span></div>
+              <div class="item"><div class="item-row"><span class="item-title">A single global rule doesn't fit every customer.</span><span class="tag">Need</span></div><span class="item-sub">Support note</span></div>
+              <div class="item"><div class="item-row"><span class="item-title">Central administrators still want to see every approval path in one place.</span><span class="tag">Pulls the other way</span></div><span class="item-sub">Customer conversation</span></div>
+              <div class="item item--muted"><div class="item-row"><span class="item-title">Let us script our own approval rules.</span><span class="tag">Separate request</span></div><span class="item-sub">Customer request</span></div>
+              <div class="item item--active"><span class="item-sub">Product question</span><p class="item-title">How might administrators configure approval paths by region without creating separate workflows?</p></div>
+              <div class="item-row"><span class="item-sub">Conflicting needs are framed, not averaged.</span><span class="tag tag--amber">Product manager decides</span></div>`),
   },
   {
-    key: 'options', product: 'pm', tag: 'PM OS', title: 'Options weighed',
-    text: 'The team compares approaches and records why. Deferring an option is a recorded reason, not a promise.',
+    key: 'choose', product: 'pm', tag: 'PM OS', when: 'The decision', title: 'Choose, and record why',
+    text: 'The team compares two approaches and records the choice, the reason and the option it set aside. Deferring is a recorded reason, not a promise to build it later.',
     link: 'Inside PM OS',
-    app: appFrame('Northstar Ledger · Tax export', 'Illustration of PM OS: one option chosen and one deferred with a recorded reason.', `
-              <div class="item item--active"><div class="item-row"><span class="item-title">A · Tax export</span><span class="tag tag--pm">Chosen</span></div><span class="sk w80"></span></div>
-              <div class="item item--muted"><div class="item-row"><span class="item-title">B · Multi-entity</span><span class="tag">Deferred · reason recorded</span></div></div>
-              <div class="item-row"><span class="sk w40"></span><span class="tag tag--amber">Product lead decides</span></div>`),
+    app: appFrame('Northline Workflows · Options', 'Illustration of PM OS: two options. Regional approval paths are chosen. The decision is to start with regional approval paths. The rationale is that it addresses a shared need while keeping the first release manageable. Custom rule scripting is deferred because it needs further discovery. The product lead decides.', `
+              <div class="item item--active"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--pm">Chosen</span></div><span class="item-sub">Decision: Start with regional approval paths.</span><span class="item-sub">Why: Addresses a shared need while keeping the first release manageable.</span></div>
+              <div class="item item--muted"><div class="item-row"><span class="item-title">Custom rule scripting</span><span class="tag">Deferred</span></div><span class="item-sub">Needs further discovery.</span></div>
+              <div class="item-row"><span class="item-sub">The reason stays with the decision.</span><span class="tag tag--amber">Product lead decides</span></div>`),
   },
   {
-    key: 'scope', product: 'pm', tag: 'PM OS', title: 'Scope agreed',
-    text: 'The product lead locks a versioned PRD snapshot: what is in scope, and what is out.',
+    key: 'context', product: 'pm', tag: 'PM OS', when: 'The decision', title: 'Context a colleague can pick up',
+    text: 'The record keeps the decision, the scope, the open questions and the deferred option together. An engineer or designer can read it without finding the right chat thread.',
     link: 'Inside PM OS',
-    branch: ['Curated roadmap · Public OS', 'Leaders choose which items customers can see. A roadmap card shows intention, not a launch date.'],
-    app: appFrame('PRD-104 · Tax export', 'Illustration of PM OS: a PRD snapshot with in-scope and out-of-scope items, locked by the product lead.', `
-              <div class="item"><div class="who"><span class="check check--on">${icon('check', 10)}</span><span class="item-title">Single-entity export</span></div><span class="tag">In scope</span></div>
-              <div class="item item--muted"><div class="who"><span class="check"></span><span class="item-title">Employee payroll</span></div><span class="tag">Out of scope</span></div>
-              <div class="item-row"><span class="lock-row">${icon('lock', 14)} PRD-104 locked</span><span class="tag tag--amber">Product lead decides</span></div>`),
+    branch: ['Delivery coordination', 'Teams can track dependencies and release milestones so people coordinate. Clarimeld does not build or deploy anything.'],
+    app: appFrame('Northline Workflows · Decision record', 'Illustration of PM OS: a decision record for engineering and design. Decision: start with regional approval paths. In the first release: approval paths by region. Not now: custom rule scripting, which needs further discovery. Open questions: what do we call a region\'s approval path, and how will central administrators see every path.', `
+              <div class="item item--active"><span class="item-title">Start with regional approval paths.</span><span class="item-sub">Addresses a shared need while keeping the first release manageable.</span></div>
+              <h4>In the first release</h4>
+              <ul class="scope-list"><li>Approval paths by region</li></ul>
+              <h4>Not now</h4>
+              <ul class="scope-list scope-list--out"><li>Custom rule scripting · needs further discovery</li></ul>
+              <h4>Open questions</h4>
+              <div class="item"><span class="item-title">What do we call a region's approval path?</span></div>
+              <div class="item"><span class="item-title">How will central administrators see every path?</span></div>`),
   },
   {
-    key: 'delivery', product: 'pm', tag: 'PM OS', title: 'Delivery coordinated',
-    text: 'Teams track dependencies and release milestones so people can coordinate. Clarimeld does not build or deploy anything.',
-    link: 'Inside PM OS',
-    app: appFrame('Northstar Ledger · Delivery', 'Illustration of PM OS: a list of dependencies and a release milestone tracked by people.', `
-              <div class="item"><div class="item-row"><span class="item-title">Accountant access</span><span class="tag">Ready</span></div></div>
-              <div class="item"><div class="item-row"><span class="item-title">Export format</span><span class="tag tag--pm">In progress</span></div></div>
-              <div class="item-row"><span class="lock-row">${icon('flag', 14)} Milestone · v2.4</span><span class="tag tag--amber">Team coordinates</span></div>`),
-  },
-  {
-    key: 'brief', product: 'writer', tag: 'Writer OS', title: 'Brief and sources',
-    text: 'A writer starts from a brief and pins the sources beside the draft, such as the agreed scope.',
-    alone: 'Writer OS projects start from a brief. They do not need a PRD.',
+    key: 'brief', product: 'writer', tag: 'Writer OS', when: 'Before sharing', title: 'Start from the agreed context',
+    text: 'A technical writer starts from a brief and keeps the decision summary beside the draft, instead of asking what was decided.',
+    alone: 'Writer OS projects start from a brief. They do not need a PM OS record.',
     link: 'Optional link: PM OS → Writer OS',
-    app: appFrame('Brief · Tax export release note', 'Illustration of Writer OS: a brief with a pinned PRD as a source.', `
-              <div class="item"><div class="item-row"><span class="item-title">Brief · Release note for accountants</span><span class="tag tag--writer">Open</span></div><div class="stack"><span class="sk w80"></span></div></div>
-              <div class="doc-pin"><strong>${icon('book', 14)} PRD-104 pinned</strong><span class="sk w60"></span></div>
-              <div class="doc-pin"><strong>${icon('book', 14)} Support notes pinned</strong><span class="sk w40"></span></div>`),
+    app: appFrame('Northline Workflows · Brief', 'Illustration of Writer OS: a brief to explain how administrators select a region and assign an approval path. The source beside it is the decision summary. It says to start with regional approval paths, and that custom rule scripting needs further discovery.', `
+              <div class="item"><div class="item-row"><span class="item-title">Explain how administrators select a region and assign an approval path.</span><span class="tag tag--writer">Brief</span></div></div>
+              <div class="doc-pin"><strong>${icon('book', 14)} Decision summary · Regional approval paths</strong><span class="item-sub">Start with regional approval paths. Custom rule scripting needs further discovery.</span></div>
+              <span class="item-sub">The source sits beside the draft. Nothing is written yet.</span>`),
   },
   {
-    key: 'write', product: 'writer', tag: 'Writer OS', title: 'Draft checked and packed',
-    text: 'Advisory flags help editors spot claims outside the sources or scope. The draft can then be packed as an article, notes or an email kit.',
+    key: 'review', product: 'writer', tag: 'Writer OS', when: 'Before sharing', title: 'Draft, then a person reviews',
+    text: 'The writer drafts guidance with the source in view. A reviewer raises a question about wording. People decide what goes out.',
     link: 'Inside Writer OS',
-    branch: ['Packs without a sign-off', 'Making a pack does not need a software approval step. Editors still check the claims.'],
-    app: appFrame('Release note · Tax export', 'Illustration of Writer OS: a draft with one advisory flag and three pack formats.', `
-              <div class="doc-pin"><strong>${icon('book', 14)} PRD-104 pinned</strong><span class="sk w60"></span></div>
-              <p class="item-title"><span class="hl">Export your books for your accountant.</span></p>
-              <div class="flag">Advisory flag · payroll is out of scope</div>
-              <div class="item-row"><span class="who"><span class="tag tag--writer">Article</span><span class="tag tag--writer">Notes</span><span class="tag tag--writer">Email kit</span></span><span class="tag tag--amber">Editor reviews</span></div>`),
+    branch: ['Advisory flags', 'Writer OS describes advisory voice and scope flags for editors. They are advice. People verify claims and citations.'],
+    app: appFrame('Northline Workflows · Draft and review', 'Illustration of Writer OS: a draft sentence, administrators select a region and assign an approval path, with the term approval path marked. The review note says to confirm the terminology with the product owner before publication. The review is open and an editor decides.', `
+              <div class="doc-pin"><strong>${icon('book', 14)} Decision summary · Regional approval paths</strong><span class="item-sub">Start with regional approval paths.</span></div>
+              <h4>Draft</h4>
+              <p class="item-title">Administrators select a region and assign an <span class="hl">approval path</span>.</p>
+              <div class="flag">Review note · Confirm the terminology with the product owner before publication.</div>
+              <div class="item-row"><span class="item-sub">The question is open. Nothing is approved yet.</span><span class="tag tag--amber">Editor decides</span></div>`),
   },
   {
-    key: 'publish', product: 'public', tag: 'Public OS', title: 'Release note published',
-    text: 'The release note moves to Public OS. A person reviews it and publishes it. Nothing publishes by itself.',
-    alone: 'You can also write a changelog directly in Public OS.',
+    key: 'share', product: 'public', tag: 'Public OS', when: 'Customer update', title: 'Choose what to share',
+    text: 'The customer-facing team decides what customers should see. Here: a clear status, a drafted update, and one item held back for now.',
     link: 'Optional link: Writer OS → Public OS',
-    app: appFrame('Changelog', 'Illustration of Public OS: a changelog entry with a publish button.', `
-              <div class="item"><div class="item-row"><span class="item-title">Tax export is here</span><span class="tag">Draft</span></div><div class="stack"><span class="sk w100"></span><span class="sk w80"></span><span class="sk w50"></span></div></div>
-              <div class="item-row"><span class="mini-btn">Publish</span><span class="tag tag--amber">Comms lead decides</span></div>`),
+    branch: ['Curated roadmap', 'Leaders choose which items customers can see. A roadmap card shows intention, not a delivery date.'],
+    app: appFrame('Northline Workflows · What to share', 'Illustration of Public OS: the team decides what to share. The roadmap item, regional approval paths, is under consideration, a direction and not a date. An update draft is not published yet. Custom rule scripting is not shared yet because it needs further discovery. The team chooses what to share.', `
+              <div class="item item--public"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--public">Under consideration</span></div><span class="item-sub">Shared as a direction, not a delivery date.</span></div>
+              <div class="item"><div class="item-row"><span class="item-title">Update draft · Regional approval paths</span><span class="tag">Draft</span></div><span class="item-sub">Reviewed wording, not published yet.</span></div>
+              <div class="item item--muted"><div class="item-row"><span class="item-title">Custom rule scripting</span><span class="tag">Not shared yet</span></div><span class="item-sub">Needs further discovery.</span></div>
+              <div class="item-row"><span class="item-sub">Request, consideration and release stay distinct.</span><span class="tag tag--amber">Team chooses what to share</span></div>`),
   },
   {
-    key: 'send', product: 'public', tag: 'Public OS', title: 'You choose who hears',
-    text: 'Publishing does not email anyone. Review the eligible recipients, then send.',
-    link: 'Optional step in Public OS',
-    branch: ['Who is eligible', 'Requesters, followers and eligible recipients are separate groups.'],
-    app: appFrame('Send update', 'Illustration of Public OS: a list of eligible recipients with checkboxes and a send button.', `
-              <h4 class="tag">Eligible recipients</h4>
-              <div class="who"><span class="check check--on">${icon('check', 10)}</span><span class="sk w60"></span></div>
-              <div class="who"><span class="check check--on">${icon('check', 10)}</span><span class="sk w50"></span></div>
-              <div class="who"><span class="check"></span><span class="sk w40"></span></div>
-              <div class="item-row"><span class="mini-btn mini-btn--amber">Send to reviewed group</span><span class="tag tag--amber">Comms lead decides</span></div>`),
+    key: 'publish', product: 'public', tag: 'Public OS', when: 'Later, when the release is ready', title: 'A reviewed update is published',
+    text: 'When the release is ready, a person reviews the update and publishes it. Publishing does not email anyone by itself.',
+    alone: 'You can also write an update directly in Public OS.',
+    link: 'Inside Public OS',
+    branch: ['Who hears', 'Optionally, a person reviews the eligible recipients and then sends. Requesters, followers and other eligible recipients are separate groups.'],
+    app: appFrame('Northline Workflows · Updates', 'Illustration of Public OS, later, when the release is ready. An update titled regional approval paths is marked released. It says administrators can select a region and assign an approval path. A person reviews and publishes it.', `
+              <div class="item item--public"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--public">Released</span></div><p class="item-sub">Administrators can select a region and assign an approval path.</p></div>
+              <div class="item-row"><span class="mini-btn">Review, then publish</span><span class="tag tag--amber">A person publishes</span></div>
+              <span class="item-sub">Publishing does not email anyone. Sending is a separate, deliberate step.</span>`),
   },
   {
-    key: 'learn', product: 'public', tag: 'Public OS', title: 'Replies come back',
-    text: 'Customer replies are logged for the next round of discovery. They do not commit your roadmap.',
+    key: 'feedback', product: 'public', tag: 'Public OS', when: 'After the update', title: 'Feedback comes back',
+    text: 'A customer replies. A person decides whether it belongs in discovery. It is feedback for the next round, not proof the release worked, and not a commitment.',
     link: 'Optional link: Public OS → PM OS',
     branch: ['Not every reply starts new work', 'A person decides which replies become evidence for a future cycle.'],
-    app: appFrame('Replies', 'Illustration: a customer reply in Public OS is tagged and passed to PM OS for discovery.', `
-              <div class="item"><div class="who"><span class="avatar avatar--b"></span><span class="item-title">Can this cover several companies?</span></div><div class="stack"><span class="sk w80"></span></div></div>
-              <div class="item-row"><span class="arrow-chip"><span class="tag tag--public">Public OS</span>${icon('arrow', 14)}<span class="tag tag--pm">PM OS · Discovery</span></span><span class="tag tag--amber">Triage lead tags</span></div>`),
-  },
-  {
-    key: 'review', product: 'pm', tag: 'PM OS', title: 'Outcomes reviewed',
-    text: 'The product team reviews replies and observations against what it expected. It is a review practice, not an automatic report.',
-    link: 'Inside PM OS · closes the loop',
-    app: appFrame('Northstar Ledger · Outcomes', 'Illustration of PM OS: customer replies and adoption observations reviewed against the original hypothesis.', `
-              <div class="item"><div class="item-row"><span class="item-title">Hypothesis: accountants want read-only access</span><span class="tag tag--pm">Reviewing</span></div></div>
-              <div class="item"><div class="item-row"><span class="item-title">Customer replies</span><span class="tag tag--public">From Public OS</span></div><span class="sk w60"></span></div>
-              <div class="item-row"><span class="sk w40"></span><span class="tag tag--amber">Product team decides</span></div>`),
+    app: appFrame('Northline Workflows · Feedback', 'Illustration of Public OS: a customer reply says we would also like to write our own rules. A person tags it for PM OS discovery. Custom rule scripting still needs further discovery. It is feedback, not a commitment.', `
+              <div class="item"><div class="who"><span class="avatar avatar--b"></span><span class="item-title">We would also like to write our own rules.</span></div><span class="item-sub">Customer reply · after the update</span></div>
+              <div class="item-row"><span class="arrow-chip"><span class="tag tag--public">Public OS</span>${icon('arrow', 14)}<span class="tag tag--pm">PM OS · Discovery</span></span><span class="tag tag--amber">A person tags it</span></div>
+              <span class="item-sub">Custom rule scripting still needs further discovery. A reply is not a commitment.</span>`),
   },
 ];
 
-// The documented stages of each product (capability source map §3). `step` = the example beat that shows it.
+// The documented groups of each product (capability source map, section 3). `step` = the example beat that shows it.
 const LANES = [
-  { key: 'pm', name: 'PM OS', line: 'Decide what to build and why', stages: [['Discovery and signals', 2], ['Strategy and trade-offs', 3], ['PRDs and agreed boundaries', 4], ['Execution coordination', 5], ['Outcomes and insights', 11]] },
-  { key: 'writer', name: 'Writer OS', line: 'Write with the sources beside you', stages: [['Intake and briefs', 6], ['Primary sources', 6], ['Voice and scope checks', 7], ['Editorial checkpoints and packaging', 7]] },
-  { key: 'public', name: 'Public OS', line: 'Hear customers, share what is next', stages: [['Ideas and voting', 1], ['Discussion and moderation', 1], ['Curated public roadmap', 4], ['Published changelogs', 8], ['Deliberate cohort sends', 9], ['Closed-loop feedback', 10]] },
+  { key: 'pm', name: 'PM OS', line: 'Decide what to build, and why', stages: [['Discovery and signals', 2], ['Strategy and trade-offs', 3], ['PRDs and agreed boundaries', 4], ['Execution coordination', 4], ['Outcomes and insights', 9]] },
+  { key: 'writer', name: 'Writer OS', line: 'Write from what was agreed', stages: [['Intake and briefs', 5], ['Primary sources', 5], ['Voice and scope checks', 6], ['Editorial checkpoints and packaging', 6]] },
+  { key: 'public', name: 'Public OS', line: 'Hear customers, share what is next', stages: [['Ideas and voting', 1], ['Discussion and moderation', 1], ['Curated public roadmap', 7], ['Published changelogs', 8], ['Deliberate cohort sends', 8], ['Closed-loop feedback', 9]] },
 ];
 
-// Optional links between products through Suite (source map §4: T1, T4, T6, T8)
+// Optional links between products through Suite (source map section 4: T1, T4, T6, T8)
 const SUITE_LINKS = [
   ['Public OS', 'PM OS', 'Feedback ingestion', 'pm', 2],
-  ['PM OS', 'Writer OS', 'Boundary feed', 'writer', 6],
-  ['Writer OS', 'Public OS', 'Release communication', 'public', 8],
-  ['Public OS', 'PM OS', 'Closed-loop feedback', 'pm', 10],
+  ['PM OS', 'Writer OS', 'Boundary feed', 'writer', 5],
+  ['Writer OS', 'Public OS', 'Release communication', 'public', 7],
+  ['Public OS', 'PM OS', 'Closed-loop feedback', 'pm', 9],
 ];
 
 
@@ -401,13 +391,13 @@ const connectorSection = () => `
         <div class="container connector-grid">
           <div class="connector-copy reveal">
             <span class="kicker">Connector</span>
-            <h2 class="h2" id="connector-heading">Where Connector could reach</h2>
-            <p class="lead">Our vision: Connector would link Clarimeld with the tools your teams already use. Each product works on its own.</p>
+            <h2 class="h2" id="connector-heading">Connector: our vision</h2>
+            <p class="lead">Our vision: Connector would link Clarimeld with other tools your teams use. Each product works on its own.</p>
           </div>
-          <ul class="connector-rail reveal" role="list" aria-label="Example tools in the Connector vision" data-delay="1">
+          <ul class="connector-rail reveal" role="list" aria-label="Example tool names, not confirmed integrations" data-delay="1">
 ${CONNECTORS.map(connectorTile).join('\n')}
           </ul>
-          <p class="connector-note reveal" data-delay="2">Examples of tools teams use, not a list of available or committed connections. Names belong to their owners; Clarimeld is not affiliated with or endorsed by them.</p>
+          <p class="connector-note reveal" data-delay="2">These are examples of tools teams use, listed to illustrate the idea. Listing a name is not a claim that it is a confirmed, available or committed connection or a customer connector, and we have not confirmed how any of them would connect. Names belong to their owners; Clarimeld is not affiliated with or endorsed by them.</p>
         </div>
       </section>
 `;
@@ -416,7 +406,7 @@ const journeySection = ({ heading, lead, id = 'journey' }) => `
       <section id="${id}" class="section on-ink" aria-labelledby="${id}-heading">
         <div class="container">
           <div class="section-head reveal">
-            <span class="kicker">The full journey</span>
+            <span class="kicker">Example workflow</span>
             <h2 class="h2" id="${id}-heading">${heading}</h2>
             <p class="lead">${lead}</p>
           </div>
@@ -439,7 +429,7 @@ ${SUITE_LINKS.map(([from, to, name, key, step]) => `                <li><a class
           </div>
           <div class="j-intro reveal">
             <h3 class="h3" id="${id}-example-heading">Follow one example</h3>
-            <p>A fictional feature request, from a customer idea to a customer update. Pick a step, or open the optional branches.</p>
+            <p>Northline Workflows is a fictional, established B2B software provider with enterprise customers in several regions. Those customers want more flexible approval controls, and different regions have different needs. Northline's team has to decide what to build first, explain it accurately and tell customers what to expect. Regional approval paths are Northline's feature, not a Clarimeld feature. This is an illustrative example, not a customer story: every name, quote and status is made up. The steps run in time order and do not show how any step is built.</p>
           </div>
           <div class="journey reveal" data-journey data-delay="1">
             <div class="j-steps" role="tablist" aria-label="Steps in the example">
@@ -448,7 +438,7 @@ ${JOURNEY.map((s, i) => `              <button type="button" class="j-step" role
             <div class="j-stage" data-product="${JOURNEY[0].product}" data-journey-stage>
 ${JOURNEY.map((s, i) => `              <div class="j-panel" role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}" data-product="${s.product}"${i === 0 ? '' : ' data-initially-hidden'} tabindex="0">
                 <div class="j-progress" aria-hidden="true"><i class="p${i + 1}"></i></div>
-                <div class="j-panel-head"><h3>${i + 1}. ${s.title}</h3><p>${s.text}</p></div>
+                <div class="j-panel-head"><span class="j-when">${s.when}</span><h3>${i + 1}. ${s.title}</h3><p>${s.text}</p></div>
                 ${s.app}
                 <div class="j-meta">
                   <p class="j-handoff">${s.link}</p>
@@ -466,41 +456,51 @@ ${JOURNEY.map((s, i) => `              <div class="j-panel" role="tabpanel" id="
           <div class="j-legend">
             <span><i class="dot-amber"></i> Amber marks where a person decides</span>
             <span>Every link between products is optional</span>
-            <span>Northstar Ledger is a fictional company</span>
+            <span>Illustrative example with fictional data, not product screens</span>
           </div>
         </div>
       </section>
 `;
 
-/* Home hero: one request moves from request to decision to reviewed content. Home only. */
+/* Home hero: a chain of four moments of one fictional example: evidence, decision, reviewed content, customer communication. Home only. */
 const heroStory = () => `
-            <div class="hs" role="group" aria-label="Illustration: one fictional request moves from Public OS to a decision in PM OS to reviewed content in Writer OS. Each link between products is optional.">
-              <article class="app hs-card hs-card--public">
-                <div class="hs-head"><a class="hs-prod" href="/public-os.html">Public OS</a><span class="hs-stage">Request</span></div>
-                <p class="sr-only">Public OS, the request: customers ask for an export for outside accountants.</p>
+            <div class="hs" role="group" aria-label="Illustration: one fictional example from Northline Workflows, in four linked moments. Evidence in PM OS: regional teams need different approval paths. A decision in PM OS: start with regional approval paths. Reviewed content in Writer OS: explain how administrators select a region and assign an approval path. Customer communication in Public OS: regional approval paths, under consideration. A person is responsible at each step, and each link between products is optional.">
+              <article class="app hs-card hs-card--pm hs-n1">
+                <div class="hs-head"><a class="hs-prod" href="/pm-os.html">PM OS</a><span class="hs-stage">Evidence</span></div>
+                <p class="sr-only">PM OS, the evidence: regional teams need different approval paths, and a single global rule does not fit every customer.</p>
                 <div class="hs-body" aria-hidden="true">
-                  <div class="item item--public"><div class="who"><span class="vote">${voteIcon}</span><span class="item-title">Export for outside accountants</span></div></div>
+                  <div class="item"><span class="item-title">Regional teams need different approval paths.</span></div>
+                  <div class="item"><span class="item-title">A single global rule doesn't fit every customer.</span></div>
                 </div>
               </article>
-              <div class="hs-thread" aria-hidden="true"><span class="hs-thread-line"></span><span class="hs-thread-label">Optional link</span></div>
-              <article class="app hs-card hs-card--pm">
+              <div class="hs-thread" aria-hidden="true"><span class="hs-thread-line"></span></div>
+              <article class="app hs-card hs-card--pm hs-n2">
                 <div class="hs-head"><a class="hs-prod" href="/pm-os.html">PM OS</a><span class="hs-stage">Decision</span></div>
-                <p class="sr-only">PM OS, the decision: the tax export option is chosen and the product lead decides.</p>
+                <p class="sr-only">PM OS, the decision: start with regional approval paths. Custom rule scripting needs further discovery. A product lead decides.</p>
                 <div class="hs-body" aria-hidden="true">
-                  <div class="item item--active"><div class="item-row"><span class="item-title">Tax export</span><span class="tag tag--pm">Chosen</span></div></div>
+                  <div class="item item--active"><div class="item-row"><span class="item-title">Start with regional approval paths.</span><span class="tag tag--pm">Chosen</span></div><span class="item-sub">Custom rule scripting needs further discovery.</span></div>
                   <span class="tag tag--amber hs-decide">Product lead decides</span>
                 </div>
               </article>
               <div class="hs-thread" aria-hidden="true"><span class="hs-thread-line"></span><span class="hs-thread-label">Optional link</span></div>
-              <article class="app hs-card hs-card--writer">
+              <article class="app hs-card hs-card--writer hs-n3">
                 <div class="hs-head"><a class="hs-prod" href="/writer-os.html">Writer OS</a><span class="hs-stage">Reviewed content</span></div>
-                <p class="sr-only">Writer OS, the reviewed content: a draft release note that an editor reviews.</p>
+                <p class="sr-only">Writer OS, the reviewed content: explain how administrators select a region and assign an approval path. An editor reviews.</p>
                 <div class="hs-body" aria-hidden="true">
-                  <span class="hs-draft">Export your books for your accountant.</span>
+                  <span class="hs-draft">Explain how administrators select a region and assign an approval path.</span>
                   <span class="tag tag--amber hs-decide">Editor reviews</span>
                 </div>
               </article>
-              <p class="hs-note">Illustration. Northstar Ledger is a fictional company. Each product also works on its own.</p>
+              <div class="hs-thread" aria-hidden="true"><span class="hs-thread-line"></span><span class="hs-thread-label">Optional link</span></div>
+              <article class="app hs-card hs-card--public hs-n4">
+                <div class="hs-head"><a class="hs-prod" href="/public-os.html">Public OS</a><span class="hs-stage">Customer communication</span></div>
+                <p class="sr-only">Public OS, the customer communication: regional approval paths, shown as under consideration. The team chooses what to share.</p>
+                <div class="hs-body" aria-hidden="true">
+                  <div class="item item--public"><div class="item-row"><span class="item-title">Regional approval paths</span><span class="tag tag--public">Under consideration</span></div></div>
+                  <span class="tag tag--amber hs-decide">Team chooses what to share</span>
+                </div>
+              </article>
+              <p class="hs-note">Illustrative example with fictional data: Northline Workflows. Each product also works on its own.</p>
             </div>`;
 
 /* Suite hero: three products that start apart, then show their optional links. Suite page only. */
@@ -509,21 +509,58 @@ const suiteStory = () => `
               <div class="ss-row">
                 <article class="app ss-card ss-card--public"><a class="hs-prod" href="/public-os.html">Public OS</a><p class="ss-line">Hear customers, share what is next</p></article>
                 <span class="ss-link" aria-hidden="true"><i></i><b>Optional</b></span>
-                <article class="app ss-card ss-card--pm"><a class="hs-prod" href="/pm-os.html">PM OS</a><p class="ss-line">Decide what to build and why</p></article>
+                <article class="app ss-card ss-card--pm"><a class="hs-prod" href="/pm-os.html">PM OS</a><p class="ss-line">Decide what to build, and why</p></article>
                 <span class="ss-link" aria-hidden="true"><i></i><b>Optional</b></span>
-                <article class="app ss-card ss-card--writer"><a class="hs-prod" href="/writer-os.html">Writer OS</a><p class="ss-line">Write with the sources beside you</p></article>
+                <article class="app ss-card ss-card--writer"><a class="hs-prod" href="/writer-os.html">Writer OS</a><p class="ss-line">Write from what was agreed</p></article>
               </div>
               <div class="ss-suite" aria-hidden="true"><span class="ss-suite-name">Clarimeld Suite</span><span class="ss-suite-line">Links are optional. A person acts at every handoff.</span></div>
               <p class="hs-note">Each product works on its own. Suite only adds the links you choose.</p>
             </div>`;
+
+/* Value sections: why the work is hard, and what gets easier for the person, their team and leadership. */
+const valueSection = ({ key, kicker, heading, hard, cols, note }) => `
+      <section class="section section--tight value" aria-labelledby="value-heading-${key}">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker${['pm', 'writer', 'public'].includes(key) ? ` kicker--${key}` : ''}">${kicker}</span>
+            <h2 class="h2" id="value-heading-${key}">${heading}</h2>
+            <p class="lead">${hard}</p>
+          </div>
+          <ul class="value-grid reveal" data-delay="1">
+${cols.map(([who, text]) => `            <li><span class="value-who">${who}</span><span class="value-text">${text}</span></li>`).join('\n')}
+          </ul>
+          <p class="ai-note reveal" data-delay="2">${note}</p>
+        </div>
+      </section>
+`;
+
+const homeValue = () => `
+      <section id="value" class="section section--tight value" aria-labelledby="value-heading-home">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker">What gets easier</span>
+            <h2 class="h2" id="value-heading-home">Different people carry different parts of one decision.</h2>
+            <p class="lead">In an established software company, the people who hear customers, decide and explain are rarely the same people. Each one needs the context the others have.</p>
+          </div>
+          <ul class="value-grid reveal" data-delay="1">
+${[
+  ['Product managers', 'PM OS', [['You', 'Weigh competing needs and record why.'], ['Your team', 'Starts from one shared record.'], ['Leaders', 'See what was chosen and what was deferred.']]],
+  ['Writers and editors', 'Writer OS', [['You', 'Write from the agreed source, not a guess.'], ['Your team', 'Fewer disconnected handoffs.'], ['Leaders', 'A review step stays visible.']]],
+  ['Customer-facing teams', 'Public OS', [['You', 'Share what is appropriate, in clear words.'], ['Customers', 'See what is requested, considered or released, and reply.'], ['Leaders', 'Choose what is shared. A roadmap is not a date.']]],
+].map(([who, prod, lines]) => `            <li><span class="value-who">${prod}</span><strong>${who}</strong>${lines.map(([l, t]) => `<span class="value-text"><b>${l}.</b> ${t}</span>`).join('')}</li>`).join('\n')}
+          </ul>
+          <p class="ai-note reveal" data-delay="2">Already use ChatGPT or Claude? Keep using them to think and draft. Clarimeld is for the record around that thinking: the evidence, the decision, the review and the update, kept where the team can find and share them. People decide at every step.</p>
+        </div>
+      </section>
+`;
 
 const pages = {};
 
 /* ---------- Home ---------- */
 pages['index.html'] = () =>
   head({
-    title: 'Clarimeld: The product lifecycle, connected.',
-    description: 'PM OS, Writer OS and Public OS: three products that each work alone, and link through Clarimeld Suite when you want.',
+    title: 'Clarimeld: From customer needs to clear product decisions and communication',
+    description: 'Clarimeld helps product, content and customer-facing teams weigh customer needs, record decisions, explain them clearly and share updates. Three products that work alone or link through Suite.',
     path: '/',
   }) +
   header('home') +
@@ -532,8 +569,8 @@ pages['index.html'] = () =>
       <section class="hero" aria-labelledby="hero-heading">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <h1 class="display" id="hero-heading">The product lifecycle, <span class="gradient-text">connected.</span></h1>
-            <p class="lead">PM OS, Writer OS and Public OS. Three products that each work alone, and link through Suite when you want.</p>
+            <h1 class="display" id="hero-heading">From customer needs to clear product decisions <span class="gradient-text">and communication.</span></h1>
+            <p class="lead">Three products for the hard, human work in between: weighing competing needs, recording why, and explaining it clearly. Use one, or link them through Suite.</p>
             <div class="hero-actions">
               <a class="btn btn-gradient" href="#contact">Contact us</a>
               <a class="btn btn-ghost" href="#products">See the products</a>
@@ -549,7 +586,7 @@ pages['index.html'] = () =>
           <div class="section-head reveal">
             <span class="kicker">Why Clarimeld</span>
             <h2 class="h2" id="why-heading">Context gets lost between teams.</h2>
-            <p class="lead">Customers ask. Product decides. Content explains. Each team ends up with a different version of the story.</p>
+            <p class="lead">In a large software company, the reason behind a decision rarely travels with it. Customers ask, product decides, content explains, and each team rebuilds the story from chats and documents.</p>
           </div>
           <div class="reveal" data-delay="1">
             <div class="mode-switch" role="group" aria-label="Show the story">
@@ -560,24 +597,24 @@ pages['index.html'] = () =>
           <div class="reveal" data-delay="2" data-gap>
             <svg class="gap-diagram" data-state="separate" viewBox="0 0 960 240" role="img" aria-label="Three teams: customers, product and content. When separate, the links between them are broken. When connected, context flows from one to the next.">
               <defs><linearGradient id="gw1" x1="260" y1="0" x2="350" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e07bff"/><stop offset="1" stop-color="#9d7bff"/></linearGradient><linearGradient id="gw2" x1="610" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#9d7bff"/><stop offset="1" stop-color="#6aa6ff"/></linearGradient></defs>
-              <rect class="node-card" x="0" y="45" width="260" height="150" rx="22"/><text class="node-title" x="28" y="112">Customers ask</text><text class="node-sub" x="28" y="142">Ideas, votes, replies</text>
-              <rect class="node-card" x="350" y="45" width="260" height="150" rx="22"/><text class="node-title" x="378" y="112">Product decides</text><text class="node-sub" x="378" y="142">Options, scope</text>
-              <rect class="node-card" x="700" y="45" width="260" height="150" rx="22"/><text class="node-title" x="728" y="112">Content explains</text><text class="node-sub" x="728" y="142">Posts, release notes</text>
+              <rect class="node-card" x="0" y="45" width="260" height="150" rx="22"/><text class="node-title" x="28" y="112">Customers ask</text><text class="node-sub" x="28" y="142">Requests in many places</text>
+              <rect class="node-card" x="350" y="45" width="260" height="150" rx="22"/><text class="node-title" x="378" y="112">Product decides</text><text class="node-sub" x="378" y="142">The decision, and why</text>
+              <rect class="node-card" x="700" y="45" width="260" height="150" rx="22"/><text class="node-title" x="728" y="112">Content explains</text><text class="node-sub" x="728" y="142">Guidance and updates</text>
               <path class="wire wire--broken" d="M272 120H338"/><path class="wire wire--broken" d="M622 120H688"/>
               <text class="lost" x="305" y="104" text-anchor="middle">?</text><text class="lost" x="655" y="104" text-anchor="middle">?</text>
               <path class="wire wire--linked" d="M262 120H348" stroke="url(#gw1)"/><path class="wire wire--linked" d="M612 120H698" stroke="url(#gw2)"/>
               <circle class="pulse" cx="266" cy="120" r="6" fill="#fff"/><circle class="pulse pulse-2" cx="616" cy="120" r="6" fill="#fff"/>
             </svg>
             <ol class="gap-mobile" data-state="separate">
-              <li><strong>Customers ask</strong><span>Ideas, votes, replies</span></li>
-              <li><strong>Product decides</strong><span>Options, scope</span></li>
-              <li><strong>Content explains</strong><span>Posts, release notes</span></li>
+              <li><strong>Customers ask</strong><span>Requests in many places</span></li>
+              <li><strong>Product decides</strong><span>The decision, and why</span></li>
+              <li><strong>Content explains</strong><span>Guidance and updates</span></li>
             </ol>
           </div>
-          <p class="gap-note" data-gap-note aria-live="polite">Separate tools. Each team re-explains the story.</p>
+          <p class="gap-note" data-gap-note aria-live="polite">Separate tools. Each team rebuilds the story.</p>
         </div>
       </section>
-
+${homeValue()}
       <section id="products" class="section" aria-labelledby="products-heading">
         <div class="container">
           <div class="section-head section-head--center reveal">
@@ -589,8 +626,8 @@ pages['index.html'] = () =>
               <div class="feature-copy reveal">
                 <span class="kicker kicker--pm">For product teams</span>
                 <h3 class="h2">PM OS</h3>
-                <p class="lead">Turn signals into decisions, and decisions into clear scope.</p>
-                <div class="chip-row"><span class="chip chip--pm"><i></i>Signals</span><span class="chip chip--pm"><i></i>Options</span><span class="chip chip--pm"><i></i>PRDs</span><span class="chip chip--pm"><i></i>Outcomes</span></div>
+                <p class="lead">Weigh competing needs, choose, and keep the reason where your team can find it.</p>
+                <div class="chip-row"><span class="chip chip--pm"><i></i>Evidence</span><span class="chip chip--pm"><i></i>Options</span><span class="chip chip--pm"><i></i>Scope</span><span class="chip chip--pm"><i></i>Outcomes</span></div>
                 <a class="link-arrow link-arrow--pm" href="/pm-os.html">Explore PM OS ${icon('arrow', 18)}</a>
               </div>
               <div class="feature-stage feature-stage--pm reveal" data-delay="1">${pmApp()}
@@ -601,7 +638,7 @@ pages['index.html'] = () =>
               <div class="feature-copy reveal">
                 <span class="kicker kicker--writer">For content and comms</span>
                 <h3 class="h2">Writer OS</h3>
-                <p class="lead">Draft with your sources beside you. No PRD required.</p>
+                <p class="lead">Write from the agreed source, with a person reviewing before it goes out.</p>
                 <div class="chip-row"><span class="chip chip--writer"><i></i>Briefs</span><span class="chip chip--writer"><i></i>Sources</span><span class="chip chip--writer"><i></i>Checks</span><span class="chip chip--writer"><i></i>Formats</span></div>
                 <a class="link-arrow link-arrow--writer" href="/writer-os.html">Explore Writer OS ${icon('arrow', 18)}</a>
               </div>
@@ -613,8 +650,8 @@ pages['index.html'] = () =>
               <div class="feature-copy reveal">
                 <span class="kicker kicker--public">For customer-facing teams</span>
                 <h3 class="h2">Public OS</h3>
-                <p class="lead">Hear customers. Share what is next. Choose who gets each update.</p>
-                <div class="chip-row"><span class="chip chip--public"><i></i>Ideas</span><span class="chip chip--public"><i></i>Roadmap</span><span class="chip chip--public"><i></i>Changelog</span><span class="chip chip--public"><i></i>Sends</span></div>
+                <p class="lead">Help customers see what is requested, considered or released, and hear back.</p>
+                <div class="chip-row"><span class="chip chip--public"><i></i>Requests</span><span class="chip chip--public"><i></i>Roadmap</span><span class="chip chip--public"><i></i>Updates</span><span class="chip chip--public"><i></i>Sends</span></div>
                 <a class="link-arrow link-arrow--public" href="/public-os.html">Explore Public OS ${icon('arrow', 18)}</a>
               </div>
               <div class="feature-stage feature-stage--public reveal" data-delay="1">${publicApp()}
@@ -626,8 +663,8 @@ pages['index.html'] = () =>
       </section>
 ` +
   journeySection({
-    heading: 'Every stage. Use one product, or link them.',
-    lead: 'Each product has its own stages and works alone. Link them through Suite when you want context to travel.',
+    heading: 'One example, three points of view.',
+    lead: 'Follow one fictional decision from customer need to customer update. Each product is useful on its own. Suite only adds the links you choose.',
     id: 'suite',
   }) +
   `      <section class="section" aria-labelledby="suite-cta-heading">
@@ -669,13 +706,14 @@ const productPage = (cfg) =>
         </div>
       </section>
 
+${cfg.value || ''}
       <section class="section" aria-labelledby="flow-heading">
         <div class="container">
           <div class="section-head section-head--center reveal">
             <span class="kicker kicker--${cfg.key}">${cfg.flowKicker}</span>
             <h2 class="h2" id="flow-heading">${cfg.flowHeading}</h2>
           </div>
-          <ol class="pipeline pipeline--${cfg.key} reveal" data-delay="1">
+          <ol class="pipeline pipeline--${cfg.key} pipeline--n${cfg.steps.length} reveal" data-delay="1">
 ${cfg.steps.map(([ic, t, d]) => `            <li><span class="pip-dot">${icon(ic, 24)}</span><strong>${t}</strong><span>${d}</span></li>`).join('\n')}
           </ol>
         </div>
@@ -698,18 +736,24 @@ ${cfg.principles.map(([t, d, amber]) => `            <li><strong>${amber ? '<i c
 pages['pm-os.html'] = () =>
   productPage({
     id: 'pm-os', key: 'pm', name: 'PM OS',
-    description: 'PM OS is a workspace for product teams to gather signals, compare options, record decisions and keep scope clear.',
-    audience: 'For product teams',
-    headline: 'From scattered signals to <span class="gradient-text">agreed scope.</span>',
-    lead: 'Gather evidence, compare options, record why, and keep scope clear.',
+    description: 'PM OS brings customer evidence, options, the reason for a decision and what was deferred into one place, so product, engineering and design share the same context.',
+    audience: 'For product managers, designers and product leaders',
+    headline: 'From competing needs to a <span class="gradient-text">decision your team can find.</span>',
+    lead: 'Bring customer evidence, options, the reason you chose and what you deferred into one place, so product, engineering and design start from the same context.',
     app: pmApp,
-    flowKicker: 'How it flows', flowHeading: 'Five steps, one thread.',
+    value: valueSection({
+      key: 'pm', kicker: 'Why it matters', heading: 'Hard to decide well when the evidence is everywhere.',
+      hard: 'In an established software company, feedback sits in sales calls, support tickets and chat threads. Different customers want different things, and by the time something is decided, the reasoning is scattered.',
+      cols: [['For you', 'See competing needs side by side, make the call, and write down why.'], ['For your team', 'Engineering and design read the decision, the scope and the open questions in one place, not a chat transcript.'], ['For leadership', 'See what was chosen, what was deferred and why, and revisit it when new evidence arrives.']],
+      note: 'Already use ChatGPT or Claude? Keep using them to think and draft. PM OS is for the record around that thinking: the evidence, the decision and the deferred option, kept where the team can revisit and share them. Assistive AI helps organise. Product managers choose.',
+    }),
+    flowKicker: 'How it flows', flowHeading: 'From evidence to a shared decision.',
     steps: [
-      ['signal', 'Signals', 'Feedback and notes in one place'],
+      ['signal', 'Signals', 'Customer needs side by side'],
       ['options', 'Options', 'Compare approaches, record why'],
-      ['doc', 'Scope', 'PRDs with what is in and out'],
-      ['flag', 'Delivery', 'Dependencies and milestones'],
-      ['loop', 'Outcomes', 'Review response after release'],
+      ['doc', 'Scope', 'What is in, out and deferred'],
+      ['flag', 'Delivery', 'Dependencies and milestones people track'],
+      ['loop', 'Outcomes', 'Review how customers responded'],
     ],
     principles: [
       ['Your team decides', 'Assistive AI helps organise. Product managers choose.', true],
@@ -721,23 +765,29 @@ pages['pm-os.html'] = () =>
 pages['writer-os.html'] = () =>
   productPage({
     id: 'writer-os', key: 'writer', name: 'Writer OS',
-    description: 'Writer OS is an editorial studio for briefs, sources, drafts and review. It works without a PRD.',
-    audience: 'For content and comms teams',
-    headline: 'Write with the <span class="gradient-text">sources beside you.</span>',
-    lead: 'An editorial studio for briefs, drafts and review. It never needs a PRD.',
+    description: 'Writer OS helps technical writers and editors turn agreed product context into clear guidance, with the source beside the draft and a person reviewing it.',
+    audience: 'For technical writers, editors and documentation leaders',
+    headline: 'Write from what the team <span class="gradient-text">agreed.</span>',
+    lead: 'Turn agreed product context into clear, reviewable guidance, with the source beside the draft and a person reviewing before it goes out.',
     app: writerApp,
-    flowKicker: 'How it flows', flowHeading: 'From brief to finished piece.',
+    value: valueSection({
+      key: 'writer', kicker: 'Why it matters', heading: 'Hard to explain what was never written down.',
+      hard: 'In an established product organisation, writers often learn what changed second-hand, from a ticket, a chat or a quick call. Guessing what was decided, or what was left out, is where mistakes get in.',
+      cols: [['For you', 'Less guesswork about what was decided. Draft with the source in view.'], ['For your team', 'Fewer disconnected handoffs. Reviewers see the brief, the source and the draft together.'], ['For leadership', 'A human review step stays visible before guidance reaches customers.']],
+      note: 'A general AI assistant such as ChatGPT or Claude can help you draft a paragraph. Writer OS is for the brief, the source and the review around it. Flags are advice. People verify claims and citations.',
+    }),
+    flowKicker: 'Typical activities', flowHeading: 'From brief to reviewed guidance.',
     steps: [
-      ['calendar', 'Briefs', 'Briefs, calendars, campaigns'],
-      ['book', 'Sources', 'Primary documents beside the draft'],
-      ['pen', 'Draft', 'Write with context in view'],
-      ['shield', 'Checks', 'Advisory flags for tone and scope'],
+      ['calendar', 'Briefs', 'Start from a brief'],
+      ['book', 'Sources', 'The agreed context beside the draft'],
+      ['pen', 'Draft', 'Write with the source in view'],
+      ['shield', 'Checks', 'Advisory flags, then a person decides'],
       ['package', 'Formats', 'Articles, notes, email kits'],
     ],
     principles: [
       ['Editors decide', 'Flags are advice. People verify claims and citations.', true],
       ['Runs standalone', 'Start from a brief. No product spec needed.', false],
-      ['Links when useful', 'Pin a PM OS scope snapshot through Suite, if you use it.', false],
+      ['Links when useful', 'Bring an agreed PM OS decision beside the draft through Suite, if you use it.', false],
     ],
   });
 
@@ -745,7 +795,7 @@ const groupsBlock = `
       <section class="section on-ink" aria-labelledby="groups-heading">
         <div class="container groups">
           <div class="reveal">
-            <svg viewBox="0 0 460 360" role="img" aria-label="Three overlapping but different groups: requesters, followers and eligible recipients.">
+            <svg viewBox="0 0 460 360" role="img" aria-label="Three separate groups that can overlap: requesters, followers and eligible recipients.">
               <circle cx="160" cy="140" r="110" fill="#e07bff" fill-opacity=".28" stroke="#e07bff" stroke-width="2"/>
               <circle cx="300" cy="140" r="110" fill="#9d7bff" fill-opacity=".28" stroke="#9d7bff" stroke-width="2"/>
               <circle cx="230" cy="236" r="100" fill="#6aa6ff" fill-opacity=".28" stroke="#6aa6ff" stroke-width="2"/>
@@ -771,23 +821,30 @@ const groupsBlock = `
 pages['public-os.html'] = () =>
   productPage({
     id: 'public-os', key: 'public', name: 'Public OS',
-    description: 'Public OS is a customer hub for ideas, a curated roadmap and changelogs, with deliberate sends to reviewed recipients.',
-    audience: 'For customer-facing teams',
-    headline: 'Hear customers. <span class="gradient-text">Share what is next.</span>',
-    lead: 'Collect ideas, curate a roadmap, publish changelogs, and decide who hears about each release.',
+    description: 'Public OS helps customer-facing teams show what is a request, what is being considered and what has been released, and gives customers a way to respond.',
+    audience: 'For customer-facing teams and the customers they serve',
+    headline: 'Requests, plans and releases, <span class="gradient-text">kept distinct.</span>',
+    lead: 'Help customers see what is a request, what is being considered and what has been released, and give them a way to respond.',
     app: publicApp,
-    flowKicker: 'How it flows', flowHeading: 'From idea to update.',
+    value: valueSection({
+      key: 'public', kicker: 'Why it matters', heading: 'Hard to be clear without sounding like a promise.',
+      hard: 'Customers ask in many places and want a straight answer. Teams worry that a vote, or a roadmap card, will be read as a commitment.',
+      cols: [['For customers', 'See relevant information in plain words, and share feedback.'], ['For your team', 'Decide what is appropriate to share, and say it clearly after a person has reviewed it.'], ['For leadership', 'Choose what customers see. A roadmap shows intention, not a delivery date.']],
+      note: 'A chat assistant can help you phrase an update. Public OS is where the request, its status, the update and the feedback it brings stay together, and where a person decides who hears.',
+    }),
+    flowKicker: 'How it flows', flowHeading: 'From request to reply.',
     steps: [
-      ['chat', 'Ideas', 'Requests, votes, comments'],
+      ['chat', 'Requests', 'Ideas, votes, comments'],
       ['shield', 'Moderate', 'Review, merge, keep it civil'],
       ['road', 'Roadmap', 'Curated by your leaders'],
-      ['doc', 'Changelog', 'Authored and published by you'],
+      ['doc', 'Updates', 'Authored and published by you'],
       ['bell', 'Send', 'Review recipients, then send'],
+      ['loop', 'Replies', 'Logged for the next round of discovery'],
     ],
     middle: groupsBlock,
     principles: [
       ['A vote is not a promise', 'Roadmaps share intent, not launch dates.', false],
-      ['A person sends', 'Publishing never emails anyone. You review, then send.', true],
+      ['A person sends', 'Publishing does not automatically email requesters. You review recipients, then send.', true],
       ['Works alone', 'Link it to PM OS and Writer OS through Suite, or never.', false],
     ],
   });
@@ -826,12 +883,12 @@ const linksBlock = `
         <div class="container">
           <div class="section-head reveal">
             <span class="kicker">What travels</span>
-            <h2 class="h2" id="links-heading">Four optional links.</h2>
+            <h2 class="h2" id="links-heading">Four optional links in this example.</h2>
           </div>
           <ul class="links-flow">
             <li class="reveal"><div class="link-pair"><span class="tag tag--public">Public OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--pm">PM OS</span></div><strong>Customer signals</strong><p>A product manager brings feedback themes into discovery.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
-            <li class="reveal" data-delay="1"><div class="link-pair"><span class="tag tag--pm">PM OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--writer">Writer OS</span></div><strong>Agreed scope</strong><p>A writer pins the locked scope snapshot beside the draft.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
-            <li class="reveal" data-delay="2"><div class="link-pair"><span class="tag tag--writer">Writer OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--public">Public OS</span></div><strong>Release note</strong><p>A comms lead loads the draft, then reviews and publishes it.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
+            <li class="reveal" data-delay="1"><div class="link-pair"><span class="tag tag--pm">PM OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--writer">Writer OS</span></div><strong>Agreed context</strong><p>A writer can keep the decision summary beside the draft.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
+            <li class="reveal" data-delay="2"><div class="link-pair"><span class="tag tag--writer">Writer OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--public">Public OS</span></div><strong>Reviewed wording</strong><p>A person brings the reviewed wording into Public OS, then reviews and publishes it.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
             <li class="reveal" data-delay="3"><div class="link-pair"><span class="tag tag--public">Public OS</span><span class="arrow">${icon('arrow', 16)}</span><span class="tag tag--pm">PM OS</span></div><strong>Customer replies</strong><p>A triage lead tags replies for the next round of discovery.</p><span class="opt"><i class="dot-amber"></i>Person decides</span></li>
           </ul>
         </div>
@@ -841,7 +898,7 @@ const linksBlock = `
 pages['suite.html'] = () =>
   head({
     title: 'Clarimeld Suite | Clarimeld',
-    description: 'Clarimeld Suite is an optional link between PM OS, Writer OS and Public OS, so context can travel with the work.',
+    description: 'Clarimeld Suite is an optional link between PM OS, Writer OS and Public OS, so the decision, its reason and the open questions can travel with the work.',
     path: '/suite.html',
   }) +
   header('suite') +
@@ -852,8 +909,8 @@ pages['suite.html'] = () =>
           <div class="page-hero-copy">
             <a class="crumb" href="/">← Clarimeld</a>
             <span class="kicker">Clarimeld Suite</span>
-            <h1 class="display" id="page-heading">Connect when <span class="gradient-text">you are ready.</span></h1>
-            <p class="lead">Each product works alone. Link them, and context can travel with the work.</p>
+            <h1 class="display" id="page-heading">Continuity when <span class="gradient-text">you choose it.</span></h1>
+            <p class="lead">Each product works alone. Link them, and the decision, its reason and the open questions can follow the work from customer need to customer update.</p>
             <div class="hero-actions">
               <a class="btn btn-gradient" href="#contact">Contact us</a>
               <a class="btn btn-ghost" href="#journey">See the example</a>
@@ -865,9 +922,15 @@ pages['suite.html'] = () =>
       </section>
 ` +
   topology() +
+  valueSection({
+    key: 'suite', kicker: 'Why it matters', heading: 'Each handoff is a chance to lose the reason.',
+    hard: 'In an established software company, the decision, the explanation and the customer update are made by different teams, often in different tools.',
+    cols: [['Product manager · PM OS', 'Makes and records the decision, and why.'], ['Technical writer · Writer OS', 'Prepares and reviews the explanation from the agreed context.'], ['Customer-facing team · Public OS', 'Chooses what to communicate, and when.']],
+    note: 'Nobody has to use all three. Suite does not run every step for you: each link is optional, and a person acts at every handoff. Already use ChatGPT or Claude? Keep using them. Suite is about carrying a decision and its reason between teams, and it does not replace anyone\'s judgment.',
+  }) +
   journeySection({
-    heading: 'The full journey, and where links are optional.',
-    lead: 'Each product has its own stages. Suite adds four optional links between them, and a person acts at every handoff.',
+    heading: 'The same example, and where links are optional.',
+    lead: 'An illustration, not a complete description of each product. Each product stays useful alone. Suite adds four optional links, and a person acts at every handoff.',
     id: 'journey',
   }) +
   linksBlock +

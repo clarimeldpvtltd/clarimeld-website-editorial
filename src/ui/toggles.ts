@@ -19,8 +19,8 @@ export function initToggles(): void {
     const targets = Array.from(document.querySelectorAll<HTMLElement>('.gap-diagram, .gap-mobile'));
     const note = document.querySelector<HTMLElement>('[data-gap-note]');
     const copy: Record<string, string> = {
-      separate: 'Separate tools. Each team re-explains the story.',
-      connected: 'Linked tools. Context moves with the work, and each team keeps its own workspace.',
+      separate: 'Separate tools. Each team rebuilds the story.',
+      connected: 'Linked tools. The decision and its reason can move with the work, and each team keeps its own workspace.',
     };
     wireSwitch(gapButtons, (mode) => {
       targets.forEach((el) => el.setAttribute('data-state', mode));
@@ -38,7 +38,7 @@ export function initToggles(): void {
     const copy: Record<string, string> = {
       standalone: 'Use one, two or all three. Nothing else is required.',
       connected:
-        'Link them and context can move with the work: signals, decisions, scope and release news. Every link is optional.',
+        'Link them and context can move with the work: customer signals, decisions, agreed context and updates. Every link is optional.',
     };
     wireSwitch(topologyButtons, (mode) => {
       topology.dataset.state = mode;

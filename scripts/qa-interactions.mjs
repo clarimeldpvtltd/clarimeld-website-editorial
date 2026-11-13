@@ -40,7 +40,7 @@ await page.focus('#journey-tab-0'); await page.keyboard.press('ArrowRight'); awa
 const sel = await page.$$eval('#journey [role=tab]', (t) => t.findIndex((x) => x.getAttribute('aria-selected') === 'true'));
 const vis = await page.$$eval('#journey [role=tabpanel]', (p) => p.map((x) => !x.hidden));
 ok('Journey: arrow keys move through steps; one panel visible', sel === 2 && vis.filter(Boolean).length === 1 && vis[2], `selected=${sel}`);
-await page.keyboard.press('End'); ok('Journey: End key selects last step (11)', (await page.getAttribute('#journey-tab-10', 'aria-selected')) === 'true');
+await page.keyboard.press('End'); ok('Journey: End key selects last step (9)', (await page.getAttribute('#journey-tab-8', 'aria-selected')) === 'true');
 await page.keyboard.press('Home'); ok('Journey: Home key selects first step', (await page.getAttribute('#journey-tab-0', 'aria-selected')) === 'true');
 // Overview chips jump to the matching step, move focus to its panel, and the optional branch opens by keyboard
 await page.click('#journey .stage-chip[data-goto="6"]');
@@ -48,8 +48,8 @@ ok('Journey overview: stage chip opens step 7', (await page.getAttribute('#journ
 ok('Journey overview: focus moves to the opened panel', (await page.evaluate(() => document.activeElement?.id)) === 'journey-panel-6');
 await page.click('#journey-panel-6 .j-branch summary');
 ok('Journey: optional branch opens and shows its text', await page.$eval('#journey-panel-6 .j-branch', (d) => d.open && d.querySelector('p').offsetHeight > 0));
-await page.click('#journey .suite-link[href="#journey-panel-9"]');
-ok('Journey overview: Suite link opens step 10', (await page.getAttribute('#journey-tab-9', 'aria-selected')) === 'true');
+await page.click('#journey .suite-link[href="#journey-panel-8"]');
+ok('Journey overview: Suite link opens step 9', (await page.getAttribute('#journey-tab-8', 'aria-selected')) === 'true');
 ok('Journey overview: 15 documented stages in 3 lanes, 4 optional Suite links', (await page.$$eval('#journey .lane .stage-chip', (c) => c.length)) === 15 && (await page.$$eval('#journey .lane', (c) => c.length)) === 3 && (await page.$$eval('#journey .suite-link', (c) => c.length)) === 4);
 // Topology toggle
 await page.click('[data-topology-mode=connected]'); ok('Suite toggle switches to connected', (await page.getAttribute('[data-topology]', 'data-state')) === 'connected');
@@ -100,9 +100,9 @@ ok('Mobile header: Contact button on one line', await mp.$eval('.header-actions 
   ok('Mobile journey: lane opens from the keyboard and shows its stages', await jp.$eval('#suite .lane--pm', (e) => e.open) && (await jp.$$eval('#suite .lane--pm .stage-chip', (c) => c.length)) === 5);
   await jp.$eval('[data-j-next]', (e) => e.scrollIntoView({ block: 'center' }));
   await jp.click('[data-j-next]');
-  ok('Mobile journey: Next moves to step 2 and announces it', /Step 2 of 11/.test(await jp.$eval('[data-j-count]', (e) => e.textContent)) && (await jp.getAttribute('[data-j-count]', 'aria-live')) === 'polite');
+  ok('Mobile journey: Next moves to step 2 and announces it', /Step 2 of 9/.test(await jp.$eval('[data-j-count]', (e) => e.textContent)) && (await jp.getAttribute('[data-j-count]', 'aria-live')) === 'polite');
   await jp.click('[data-j-prev]');
-  ok('Mobile journey: Previous returns to step 1', /Step 1 of 11/.test(await jp.$eval('[data-j-count]', (e) => e.textContent)));
+  ok('Mobile journey: Previous returns to step 1', /Step 1 of 9/.test(await jp.$eval('[data-j-count]', (e) => e.textContent)));
   ok('Mobile journey: Prev/Next targets are at least 44 px', await jp.$$eval('.j-nav .btn', (bs) => bs.every((x) => x.getBoundingClientRect().height >= 44)));
   const dm = await b.newContext({ viewport: { width: 1440, height: 900 } }); const dp = await dm.newPage();
   await dp.goto(B + '/', { waitUntil: 'networkidle' });
@@ -120,7 +120,7 @@ ok('Reduced motion: animations off, content visible without scrolling', anim.eve
 // No-JS fallback
 const nj = await b.newContext({ viewport: { width: 1440, height: 900 }, javaScriptEnabled: false }); const np = await nj.newPage();
 await np.goto(B + '/suite.html', { waitUntil: 'load' });
-ok('No-JS: all 11 journey steps visible, content not hidden', (await np.$$eval('#journey [role=tabpanel]', (p) => p.filter((x) => x.offsetParent !== null).length)) === 11 && (await np.$$eval('.reveal', (r) => r.every((e) => getComputedStyle(e).opacity === '1'))));
+ok('No-JS: all 9 journey steps visible, content not hidden', (await np.$$eval('#journey [role=tabpanel]', (p) => p.filter((x) => x.offsetParent !== null).length)) === 9 && (await np.$$eval('.reveal', (r) => r.every((e) => getComputedStyle(e).opacity === '1'))));
 
 // Focus visibility
 await page.goto(B + '/', { waitUntil: 'networkidle' });
