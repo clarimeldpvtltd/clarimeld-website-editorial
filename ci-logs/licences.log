@@ -1,0 +1,18 @@
+
+> clarimeld-website-preview@0.1.0 check:licenses
+> node scripts/check-licenses.mjs
+
+=== Direct Dependencies License Report ===
+- typescript@5.9.3 [dev-only]: Apache-2.0
+- vite@6.4.5 [dev-only]: MIT
+- @fontsource-variable/inter@5.3.0 [runtime]: OFL-1.1
+- @fontsource-variable/jetbrains-mono@5.3.0 [runtime]: OFL-1.1
+
+=== Transitive Tree Summary (17 installed packages) ===
+- MIT: 12
+- OFL-1.1: 2
+- ISC: 1
+- BSD-3-Clause: 1
+- Apache-2.0: 1
+
+All installed packages match permissive open-source licenses.

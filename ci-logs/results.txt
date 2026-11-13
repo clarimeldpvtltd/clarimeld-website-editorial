@@ -1,0 +1,3 @@
+typecheck: success
+vite build: success
+licence check: success
