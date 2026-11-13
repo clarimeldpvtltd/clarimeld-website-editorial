@@ -20,11 +20,16 @@ main:focus { outline: none; }
 :focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
 .on-ink :focus-visible, .site-footer :focus-visible { outline-color: #fff; }
 
+/* Skip link: parked above the viewport by its OWN rendered height (a translateY percentage refers to the element's own box, so it
+   stays hidden at any text size or zoom; a fixed top offset or a percentage top, which refers to the containing block, does not).
+   The extra 16px keeps its focus outline off-screen too. It stays in the layout, so it remains keyboard-focusable. Fixed
+   positioning plus z-index above the sticky header keeps it fully visible and unobscured when focused, wherever the page is scrolled. */
 .skip-link {
-  position: absolute; left: 16px; top: -64px; z-index: 100;
+  position: fixed; left: 16px; top: 0; z-index: 100; max-width: calc(100vw - 32px); box-sizing: border-box;
+  transform: translateY(calc(-100% - 16px));
   background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; text-decoration: none; font-weight: 600;
 }
-.skip-link:focus { top: 12px; }
+.skip-link:focus { transform: translateY(12px); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }

@@ -1,3 +1,8 @@
+HISTORICAL EXPORT PROVENANCE. This file is not the current build revision.
+The revision CI actually builds is the "workflow commit" line that the build workflow prints just above this text in ci-logs/environment.txt.
+
+This repository was first populated from an export of the website project at:
 source project commit: fd2a8e41a2c1296fba3ac634ebc55f5c1b974a41 (publish/contact-link-replacement)
-included: pages, src, public (without connectors README), vite/ts config, package files, scripts/check-licenses.mjs
-excluded: docs, QA and generator scripts, private notes
+That first export included: pages, src, public (without connectors README), vite/ts config, package files, scripts/check-licenses.mjs
+That first export left out: docs and private notes.
+Since then the page generator (scripts/generate-pages.mjs) and the QA scripts (scripts/qa-*.mjs, scripts/run-qa.mjs) have been added to this repository.

@@ -1,4 +1,4 @@
-// Sticky-header obstruction checks. Every target listed in TARGETS is REQUIRED: a missing link, section or heading is a failure,
+// Sticky-header obstruction checks and the skip-link regression. Every target listed in TARGETS is REQUIRED: a missing link, section or heading is a failure,
 // not a skip. Exit status is 0 only if every assertion passes.
 // Usage: serve the build, then  PREVIEW_URL=http://127.0.0.1:4173 node scripts/qa-header-overlap.mjs   (needs Playwright; optional CHROME_PATH)
 // Targets were taken from the built pages: #contact exists on all five pages; #products only on Home; #journey and the
@@ -91,6 +91,59 @@ for (const [label, vp] of VIEWPORTS) {
   }
   await ctx.close();
 }
+// ---- Skip link regression: hidden when unfocused (nothing protruding into the header band), fully visible and unobscured when
+// focused from the keyboard, and it moves the user to the main content. Covers 320, 390 and 1440 px at normal and 200% text, every page.
+// A box whose bottom edge is below the top of the viewport, at any size, is a failure (that was the fixed -64px offset bug).
+const SKIP_VIEWPORTS = [320, 390, 1440];
+for (const w of SKIP_VIEWPORTS) for (const scale of [100, 200]) {
+  const ctx = await b.newContext({ viewport: { width: w, height: 800 } });
+  const p = await ctx.newPage(); await p.addInitScript(installSettle);
+  for (const url of Object.keys(TARGETS)) {
+    const tag = `skip link ${w}px ${scale}% text ${url}`;
+    await p.goto(B + url, { waitUntil: 'networkidle' });
+    if (scale === 200) await p.evaluate(() => document.documentElement.style.setProperty('font-size', '200%', 'important'));
+    const hidden = await p.evaluate(() => {
+      const a = document.querySelector('a.skip-link'); if (!a) return null; const r = a.getBoundingClientRect(); const cs = getComputedStyle(a); const hb = document.querySelector('header').getBoundingClientRect();
+      const pts = []; for (let x = 4; x < innerWidth; x += Math.max(8, Math.floor(innerWidth / 16))) for (let y = 1; y < Math.max(hb.bottom, 2); y += 8) pts.push(document.elementsFromPoint(x, y).includes(a));
+      return { bottom: Math.round(r.bottom * 10) / 10, height: Math.round(r.height), reachable: cs.display !== 'none' && cs.visibility !== 'hidden', hitInHeaderBand: pts.some(Boolean) };
+    });
+    ok(`${tag}: unfocused, the link sits entirely above the viewport and does not appear in the header band`, !!hidden && hidden.bottom <= 0 && !hidden.hitInHeaderBand, JSON.stringify(hidden));
+    ok(`${tag}: unfocused, it is still focusable (not display:none or visibility:hidden)`, !!hidden && hidden.reachable);
+    await p.keyboard.press('Tab');
+    const f = await p.evaluate(() => {
+      const a = document.querySelector('a.skip-link'); const r = a.getBoundingClientRect(); const cs = getComputedStyle(a);
+      const cx = (r.left + r.right) / 2, cy = (r.top + r.bottom) / 2; // points inside the painted shape (the box has 10px rounded corners, so its bounding-box corners are not painted)
+      const probe = [[r.left + 12, cy], [r.right - 12, cy], [cx, r.top + 4], [cx, r.bottom - 4], [cx, cy]]
+        .map(([x, y]) => { const h = document.elementFromPoint(x, y); return !!h && (h === a || a.contains(h)); });
+      return { focused: document.activeElement === a, top: Math.round(r.top), left: Math.round(r.left), bottom: Math.round(r.bottom), right: Math.round(r.right), vw: innerWidth, vh: innerHeight, unobscured: probe.every(Boolean), outline: cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0 };
+    });
+    ok(`${tag}: first Tab focuses it, it is fully inside the viewport, unobscured (5 probe points) and shows a focus outline`, f.focused && f.top >= 0 && f.left >= 0 && f.bottom <= f.vh && f.right <= f.vw && f.unobscured && f.outline, JSON.stringify(f));
+    await p.keyboard.press('Enter'); await p.evaluate(() => window.__settle());
+    const j = await p.evaluate(() => {
+      const m = document.getElementById('main-content'); const r = m.getBoundingClientRect(); const hb = document.querySelector('header').getBoundingClientRect().bottom; const a = document.querySelector('a.skip-link').getBoundingClientRect();
+      return { hash: location.hash, mainFocused: document.activeElement === m, mainTop: Math.round(r.top), headerBottom: Math.round(hb), vh: innerHeight, skipBottomAfter: Math.round(a.bottom) };
+    });
+    ok(`${tag}: Enter goes to #main-content, focuses main, main starts below the header, and the link hides again`, j.hash === '#main-content' && j.mainFocused && j.mainTop >= j.headerBottom - 0.5 && j.mainTop < j.vh && j.skipBottomAfter <= 0, JSON.stringify(j));
+  }
+  await ctx.close();
+}
+
+// Browser zoom, emulated: zoom Z means a layout viewport of (window width / Z) CSS px at deviceScaleFactor Z. A 1280 px window at
+// 200%, 300% and 400% gives 640, 427 and 320 CSS px. This is an emulation, not Chrome's zoom UI (which automation cannot drive).
+for (const z of [2, 3, 4]) {
+  const ctx = await b.newContext({ viewport: { width: Math.round(1280 / z), height: Math.round(800 / z) }, deviceScaleFactor: z });
+  const p = await ctx.newPage(); await p.addInitScript(installSettle);
+  for (const url of Object.keys(TARGETS)) {
+    const tag = `skip link emulated browser zoom ${z * 100}% (${Math.round(1280 / z)} CSS px) ${url}`;
+    await p.goto(B + url, { waitUntil: 'networkidle' });
+    const hidden = await p.evaluate(() => { const a = document.querySelector('a.skip-link'); return a.getBoundingClientRect().bottom; });
+    await p.keyboard.press('Tab');
+    const f = await p.evaluate(() => { const a = document.querySelector('a.skip-link'); const r = a.getBoundingClientRect(); const h = document.elementFromPoint((r.left + r.right) / 2, (r.top + r.bottom) / 2); return { focused: document.activeElement === a, top: r.top, left: r.left, bottom: r.bottom, right: r.right, vw: innerWidth, vh: innerHeight, unobscured: h === a || a.contains(h) }; });
+    ok(`${tag}: hidden when unfocused, fully visible and unobscured when focused`, hidden <= 0 && f.focused && f.top >= 0 && f.left >= 0 && f.bottom <= f.vh && f.right <= f.vw && f.unobscured, JSON.stringify({ hiddenBottom: hidden, ...f }));
+  }
+  await ctx.close();
+}
+
 await b.close();
 
 console.log(out.join('\n'));
