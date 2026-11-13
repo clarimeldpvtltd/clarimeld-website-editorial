@@ -7,7 +7,7 @@
 .app-dots { display: inline-flex; gap: 6px; }
 .app-dots i { width: 10px; height: 10px; border-radius: 50%; background: #ddd8ee; }
 .app-title { font-weight: 650; flex: 1 1 9rem; min-width: 0; overflow-wrap: anywhere; }
-.app-tag { flex: none; font: 600 0.75rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.app-tag { flex: none; font: 600 0.75rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; max-width: 100%; overflow-wrap: anywhere; }
 .app-body { display: grid; gap: 0; }
 .pane { padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
 .pane + .pane { border-left: 1px solid var(--line); }
